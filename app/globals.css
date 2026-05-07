@@ -2,13 +2,14 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Palette — navy (structural) + mustard (accent) + warm linen
-     Navy echoes the glasses frames in the headshot.
-     Mustard echoes the blazer. Both are fixed. */
+  /* Palette — olive (structure) + mustard (decoration) + royal blue (interaction)
+     Olive and mustard share the warm side of the wheel.
+     Royal blue is the cool counterpoint — links only. */
   --color-ground: hsl(38 30% 91%);
   --color-surface: hsl(38 22% 82%);
-  --color-navy: hsl(85 50% 18%);
+  --color-olive: hsl(85 50% 18%);
   --color-mustard: hsl(40 80% 50%);
+  --color-royal: hsl(225 73% 57%);
   --color-ochre: hsl(38 70% 50%);
   --color-cream: hsl(40 45% 96%);
   --color-text-primary: hsl(20 22% 9%);
@@ -53,7 +54,7 @@
   }
 
   a {
-    color: var(--color-text-primary);
+    color: var(--color-royal);
   }
 
   a:hover {

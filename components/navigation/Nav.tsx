@@ -8,7 +8,7 @@ const links = [
 
 export function Nav() {
   return (
-    <nav className="hidden md:flex fixed left-0 top-0 h-screen w-48 bg-navy flex-col px-7 py-10 z-50">
+    <nav className="hidden md:flex fixed left-0 top-0 h-screen w-48 bg-olive flex-col px-7 py-10 z-50">
       <Link
         href="/"
         className="font-display text-2xl text-cream leading-snug no-underline hover:text-ochre transition-colors"
