@@ -1,0 +1,38 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Kimberly Garmoe" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "About" [ref=e6] [cursor=pointer]:
+          - /url: /aboutme
+      - listitem [ref=e7]:
+        - link "Writing" [ref=e8] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e9]:
+        - link "Projects" [ref=e10] [cursor=pointer]:
+          - /url: /projects
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - paragraph [ref=e13]: in-progress
+      - heading "Pursinator" [level=1] [ref=e14]
+      - paragraph [ref=e15]: A collection-management and ranking application for evaluating what to keep, review, or sell.
+    - generic [ref=e16]:
+      - heading "Overview" [level=2] [ref=e17]
+      - paragraph [ref=e18]: "Pursinator is a collection management system designed to help users evaluate and refine what they own. Initially focused on handbags and accessories, the underlying model is broader: a system for curation, ranking, and preference mapping across any collection."
+      - paragraph [ref=e19]: The core problem it solves is not inventory — it's decision support. What stays? What goes? What deserves a closer look?
+      - heading "What it does" [level=2] [ref=e20]
+      - list [ref=e21]:
+        - listitem [ref=e22]: Tracks items in a collection with rich metadata
+        - listitem [ref=e23]: Provides ranking and comparison workflows
+        - listitem [ref=e24]: Maps emotional and practical preference signals
+        - listitem [ref=e25]: Supports weeding decisions with structured criteria
+      - heading "Status" [level=2] [ref=e26]
+      - paragraph [ref=e27]: In progress. Core data model and ranking logic under development.
+      - heading "Technical notes" [level=2] [ref=e28]
+      - paragraph [ref=e29]: Separate deployment from kimberly-garmoe-web. Auth, user state, and collection data live in the pursinator repo. This page is the public-facing project writeup.
+    - link "Repository ↗" [ref=e31] [cursor=pointer]:
+      - /url: https://github.com/kagarmoe/pursinator
+  - button "Open Next.js Dev Tools" [ref=e37] [cursor=pointer]:
+    - img [ref=e38]
+  - alert [ref=e41]

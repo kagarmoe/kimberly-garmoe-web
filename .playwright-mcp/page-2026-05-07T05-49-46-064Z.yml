@@ -1,0 +1,40 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Kimberly Garmoe" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "About" [ref=e6] [cursor=pointer]:
+          - /url: /aboutme
+      - listitem [ref=e7]:
+        - link "Writing" [ref=e8] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e9]:
+        - link "Projects" [ref=e10] [cursor=pointer]:
+          - /url: /projects
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - paragraph [ref=e13]: Projects
+      - heading "Work" [level=1] [ref=e14]
+    - generic [ref=e15]:
+      - article [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - paragraph [ref=e19]: Planned
+            - paragraph [ref=e20]: TypeScript, Next.js
+          - generic [ref=e21]:
+            - heading "Idle Chapters" [level=2] [ref=e22]:
+              - link "Idle Chapters" [ref=e23] [cursor=pointer]:
+                - /url: /projects/idle-chapters
+            - paragraph [ref=e24]: A cozy text-based RPG and interactive fiction system built on procedural storylets and narrative architecture.
+      - article [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - paragraph [ref=e28]: In progress
+            - paragraph [ref=e29]: Next.js, TypeScript, PostgreSQL
+          - generic [ref=e30]:
+            - heading "Pursinator" [level=2] [ref=e31]:
+              - link "Pursinator" [ref=e32] [cursor=pointer]:
+                - /url: /projects/pursinator
+            - paragraph [ref=e33]: A collection-management and ranking application for evaluating what to keep, review, or sell.
+  - alert [ref=e34]
