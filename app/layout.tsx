@@ -1,13 +1,36 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Lora } from "next/font/google";
+import { Playfair_Display, Fraunces, Bodoni_Moda, Cardo, Sorts_Mill_Goudy, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
 
-const displayFont = Cormorant_Garamond({
-  variable: "--font-cormorant",
+export const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+export const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+export const bodoni = Bodoni_Moda({
+  variable: "--font-bodoni",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+export const cardo = Cardo({
+  variable: "--font-cardo",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const sortsMillGoudy = Sorts_Mill_Goudy({
+  variable: "--font-goudy",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 const bodyFont = Lora({
@@ -35,10 +58,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const allFontVars = [
+    playfair.variable,
+    fraunces.variable,
+    bodoni.variable,
+    cardo.variable,
+    sortsMillGoudy.variable,
+    bodyFont.variable,
+    // Default display to Playfair for the live site
+    "--font-display-current: var(--font-playfair)",
+  ].join(' ');
+
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
+      className={`${playfair.variable} ${fraunces.variable} ${bodoni.variable} ${cardo.variable} ${sortsMillGoudy.variable} ${bodyFont.variable} antialiased`}
     >
       <body className="md:pl-48">
         <a

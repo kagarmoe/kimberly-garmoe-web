@@ -11,7 +11,7 @@ export function Nav() {
     <nav className="hidden md:flex fixed left-0 top-0 h-screen w-48 bg-forest flex-col px-7 py-10 z-50">
       <Link
         href="/"
-        className="font-display text-2xl italic text-cream leading-snug no-underline hover:text-ochre transition-colors"
+        className="font-display text-2xl text-cream leading-snug no-underline hover:text-ochre transition-colors"
       >
         Kimberly<br />Garmoe
       </Link>

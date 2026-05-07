@@ -23,7 +23,7 @@ export function Hero() {
         {/* Left: enormous italic name */}
         <div>
           <h1
-            className="font-display italic text-display text-text-primary leading-none"
+            className="font-display text-display text-text-primary leading-none"
             style={{ marginLeft: '-0.04em' }}
           >
             Kimberly
