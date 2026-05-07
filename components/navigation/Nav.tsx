@@ -23,7 +23,7 @@ export function Nav() {
           <li key={href}>
             <Link
               href={href}
-              className="font-display text-label uppercase tracking-widest text-cream/60 no-underline hover:text-cream transition-colors"
+              className="font-display text-sm uppercase tracking-widest text-cream no-underline hover:text-ochre transition-colors"
             >
               {label}
             </Link>
