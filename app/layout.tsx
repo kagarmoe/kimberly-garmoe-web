@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono, Lora } from "next/font/google";
+import { Barlow_Condensed, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
 
-const displayFont = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const displayFont = Barlow_Condensed({
+  variable: "--font-barlow-condensed",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const bodyFont = Lora({
@@ -36,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${displayFont.variable} ${bodyFont.variable}`}
+      className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
     >
       <body>
         <Nav />

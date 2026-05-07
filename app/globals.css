@@ -2,36 +2,35 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Colors */
-  --color-ground: hsl(210 35% 8%);
-  --color-surface: hsl(210 30% 12%);
-  --color-accent: hsl(38 85% 48%);
-  --color-text-primary: hsl(38 15% 88%);
-  --color-text-muted: hsl(210 15% 55%);
-  --color-teal: hsl(200 55% 45%);
+  /* Colors — warm ivory + deep navy */
+  --color-ground: hsl(40 28% 95%);
+  --color-surface: hsl(40 18% 87%);
+  --color-accent: hsl(222 45% 26%);
+  --color-text-primary: hsl(222 18% 10%);
+  --color-text-muted: hsl(222 10% 42%);
+  --color-teal: hsl(222 40% 40%);
 
   /* Type scale */
   --text-display: clamp(3.5rem, 10vw, 9rem);
-  --text-display--line-height: 0.9;
-  --text-display--letter-spacing: -0.03em;
+  --text-display--line-height: 0.88;
+  --text-display--letter-spacing: -0.02em;
 
   --text-heading: clamp(1.75rem, 4vw, 3.5rem);
-  --text-heading--line-height: 1.05;
-  --text-heading--letter-spacing: -0.02em;
+  --text-heading--line-height: 1.0;
+  --text-heading--letter-spacing: -0.01em;
 
   --text-label: 0.6875rem;
   --text-label--line-height: 1;
-  --text-label--letter-spacing: 0.12em;
+  --text-label--letter-spacing: 0.14em;
 
   --text-body: clamp(0.9375rem, 1.5vw, 1.0625rem);
   --text-body--line-height: 1.6;
 }
 
-/* Font families reference CSS vars set by next/font on <html> */
 @theme inline {
-  --font-display: var(--font-jetbrains-mono);
+  --font-display: var(--font-barlow-condensed);
   --font-body: var(--font-lora);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-mono: var(--font-barlow-condensed);
 }
 
 @layer base {
@@ -45,18 +44,6 @@
     font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
     line-height: 1.6;
     position: relative;
-  }
-
-  /* Film grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    pointer-events: none;
-    opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    mix-blend-mode: screen;
   }
 
   a {

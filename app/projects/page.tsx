@@ -2,7 +2,7 @@ import { getAllProjects } from '@/lib/content'
 import { ProjectEntry } from '@/components/projects/ProjectEntry'
 
 export const metadata = {
-  title: 'Projects — Kimberly Garmoe',
+  title: 'Projects',
   description: 'Projects and applications by Kimberly Garmoe.',
 }
 

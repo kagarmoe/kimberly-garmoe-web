@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About — Kimberly Garmoe',
+  title: 'About',
   description: 'Information architect and technical writer focused on knowledge systems for AI.',
 }
 

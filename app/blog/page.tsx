@@ -2,7 +2,7 @@ import { getAllPosts } from '@/lib/content'
 import { PostEntry } from '@/components/blog/PostEntry'
 
 export const metadata = {
-  title: 'Writing — Kimberly Garmoe',
+  title: 'Writing',
   description: 'Essays and technical notes by Kimberly Garmoe.',
 }
 

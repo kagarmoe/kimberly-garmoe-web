@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = getProject(slug)
   if (!project) return {}
   return {
-    title: `${project.title} — Kimberly Garmoe`,
+    title: project.title,
     description: project.description,
   }
 }
@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: Props) {
         <p className="font-body text-xl text-text-muted">{project.description}</p>
       </div>
 
-      <div className="prose prose-invert max-w-none font-body">
+      <div className="prose max-w-none font-body">
         <MDXRemote source={project.content} />
       </div>
 

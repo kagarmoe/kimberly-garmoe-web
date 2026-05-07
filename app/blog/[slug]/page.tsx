@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPost(slug)
   if (!post) return {}
   return {
-    title: `${post.title} — Kimberly Garmoe`,
+    title: post.title,
     description: post.description,
   }
 }
@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
         <div />
-        <div className="prose prose-invert max-w-none font-body">
+        <div className="prose max-w-none font-body">
           <MDXRemote source={post.content} />
         </div>
       </div>
