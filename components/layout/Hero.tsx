@@ -5,7 +5,7 @@ export function Hero() {
     <section className="relative min-h-screen overflow-hidden">
 
       {/* Terracotta panel — right half background */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-terracotta/12" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-mustard/12" />
 
       {/* Top strip — location + role */}
       <div className="relative z-10 flex justify-between items-baseline px-10 pt-10 border-b border-surface pb-4">
@@ -38,13 +38,13 @@ export function Hero() {
           </p>
 
           {/* Decorative rule */}
-          <div className="mt-10 w-12 border-t-2 border-terracotta" />
+          <div className="mt-10 w-12 border-t-2 border-mustard" />
         </div>
 
         {/* Right: photo with layered offset */}
         <div className="relative mt-4">
           <div
-            className="absolute bg-terracotta/25"
+            className="absolute bg-mustard/25"
             style={{ inset: 0, transform: 'translate(10px, 10px)' }}
           />
           <Image

@@ -2,19 +2,20 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Maximalist palette — forest + terracotta + warm linen */
+  /* Palette — olive (structure) + mustard (decoration) + royal blue (interaction)
+     Olive and mustard share the warm side of the wheel.
+     Royal blue is the cool counterpoint — links only. */
   --color-ground: hsl(38 30% 91%);
   --color-surface: hsl(38 22% 82%);
-  --color-forest: #11703a;
-  --color-terracotta: hsl(14 58% 48%);
+  --color-olive: hsl(85 50% 18%);
+  --color-mustard: hsl(40 80% 50%);
   --color-ochre: hsl(38 70% 50%);
   --color-cream: hsl(40 45% 96%);
   --color-text-primary: hsl(20 22% 9%);
   --color-text-muted: hsl(20 12% 40%);
 
   /* Aliases used by inner pages */
-  --color-accent: hsl(14 58% 48%);
-  --color-teal: hsl(163 32% 28%);
+  --color-accent: hsl(40 80% 50%);
 
   /* Type scale */
   --text-display: clamp(4rem, 11vw, 10rem);
@@ -52,11 +53,11 @@
   }
 
   a {
-    color: var(--color-teal);
+    color: var(--color-text-primary);
   }
 
   a:hover {
-    color: var(--color-terracotta);
+    color: var(--color-mustard);
   }
 
   .section-rule {
@@ -64,6 +65,6 @@
   }
 
   .accent-rule {
-    border-top: 3px solid var(--color-terracotta);
+    border-top: 3px solid var(--color-mustard);
   }
 }

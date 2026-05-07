@@ -39,7 +39,7 @@ export default async function BlogPostPage({ params }: Props) {
             })}
           </time>
         </div>
-        <div className="border-t-[3px] border-accent pt-6">
+        <div className="border-t-[3px] border-accent pt-6 bg-accent/8 -mx-8 px-8">
           <h1 className="font-display text-heading text-text-primary mb-4">
             {post.title}
           </h1>

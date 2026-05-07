@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
@@ -15,6 +15,11 @@ const bodyFont = Lora({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -42,7 +47,7 @@ export default function RootLayout({
       <body className="md:pl-48">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-forest focus:text-cream focus:font-display focus:text-label focus:uppercase focus:tracking-widest focus:no-underline"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-olive focus:text-cream focus:font-display focus:text-label focus:uppercase focus:tracking-widest focus:no-underline"
         >
           Skip to main content
         </a>
