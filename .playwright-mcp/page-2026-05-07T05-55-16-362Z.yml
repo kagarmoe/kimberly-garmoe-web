@@ -1,0 +1,137 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Kimberly Garmoe" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "About" [ref=e6] [cursor=pointer]:
+          - /url: /aboutme
+      - listitem [ref=e7]:
+        - link "Writing" [ref=e8] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e9]:
+        - link "Projects" [ref=e10] [cursor=pointer]:
+          - /url: /projects
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: About
+        - heading "Kimberly Garmoe" [level=1] [ref=e15]
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - paragraph [ref=e18]: Seattle, WA
+          - paragraph [ref=e19]:
+            - link "Contact" [ref=e20] [cursor=pointer]:
+              - /url: mailto:kagarmoe@gmail.com
+          - paragraph [ref=e21]:
+            - link "LinkedIn ↗" [ref=e22] [cursor=pointer]:
+              - /url: https://linkedin.com/in/kimberlygarmoe
+          - paragraph [ref=e23]:
+            - link "GitHub ↗" [ref=e24] [cursor=pointer]:
+              - /url: https://github.com/kagarmoe
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: I'm an information architect expanding into knowledge systems for AI, with a foundation in taxonomy and structured content, refreshed by my MLIS background, and current work focused on ontology, retrieval, graphs, and knowledge-centered AI systems.
+          - paragraph [ref=e27]: My background spans complex technical domains, including security, cryptography, payments, and identity systems. I'm particularly strong in information architecture, taxonomy, and content governance for environments where clarity, correctness, and long-term maintainability matter.
+          - paragraph [ref=e28]: "I'm interested in the structures AI systems need in order to retrieve, reason over, and use knowledge well. This next phase of my work connects information architecture with ontology, retrieval, graphs, and RAG. I'm motivated by work that treats documentation and knowledge structures as infrastructure: precise, resilient, and designed to scale."
+    - generic [ref=e29]:
+      - paragraph [ref=e31]: Experience
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - paragraph [ref=e35]: October 2022 – January 2026
+            - paragraph [ref=e36]: Seattle, WA
+          - generic [ref=e37]:
+            - heading "Amazon Web Services (AWS)" [level=2] [ref=e38]
+            - paragraph [ref=e39]: Senior Technical Writer
+            - list [ref=e40]:
+              - listitem [ref=e41]: —Documented cryptographic and identity infrastructure used in regulated and high-assurance environments, with a focus on key management, signing, encryption, and trust boundaries.
+              - listitem [ref=e42]: —Began in the Protocols, Libraries & Algorithms group, documenting cryptographic libraries, Cryptographic Computing, and FIPS-related material.
+              - listitem [ref=e43]: —Later covered AWS Secrets Manager, Key Management Service, Payment Cryptography, CloudHSM, Certificate Manager, and Private Certificate Authority.
+              - listitem [ref=e44]: —Led taxonomy and information architecture work for cryptography and technical content teams, designing durable structures for complex, evolving systems.
+              - listitem [ref=e45]: —Built AI-assisted editing tools to enforce clarity, correctness, and consistency at scale.
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - paragraph [ref=e48]: April 2022 – July 2022
+            - paragraph [ref=e49]: United States
+          - generic [ref=e50]:
+            - heading "Tecton" [level=2] [ref=e51]
+            - paragraph [ref=e52]: Senior Technical Writer
+            - list [ref=e53]:
+              - listitem [ref=e54]: —Individual contributor for machine learning feature store documentation.
+              - listitem [ref=e55]: —Collaborated with UX to create short, readable UI content.
+              - listitem [ref=e56]: —Improved documentation design, architecture, and delivery.
+        - generic [ref=e57]:
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: December 2016 – March 2022
+            - paragraph [ref=e60]: Seattle, WA
+          - generic [ref=e61]:
+            - heading "Chef Software" [level=2] [ref=e62]
+            - paragraph [ref=e63]: Manager, Technical Writing → Sr. Technical Writer
+            - list [ref=e64]:
+              - listitem [ref=e65]: —Led the consolidation of product documentation from several microsites into a single website while maintaining source files in separate GitHub repositories.
+              - listitem [ref=e66]: —Managed a global team in a rapidly changing environment.
+              - listitem [ref=e67]: —The consolidated site featured federated search and automation for reference material — ensuring content stayed current, correct, and complete.
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - paragraph [ref=e70]: May 2015 – February 2016
+            - paragraph [ref=e71]: Seattle, WA
+          - generic [ref=e72]:
+            - heading "The Seattle Public Library" [level=2] [ref=e73]
+            - paragraph [ref=e74]: Reference Librarian
+            - list [ref=e75]:
+              - listitem [ref=e76]: —Identified and interpreted user needs; provided reference, readers' advisory, computer, database, and referral services.
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - paragraph [ref=e79]: 1998 – 2010
+            - paragraph [ref=e80]: Los Angeles, CA
+          - generic [ref=e81]:
+            - heading "UCLA" [level=2] [ref=e82]
+            - paragraph [ref=e83]: Collections Development Assistant & Instructor
+            - list [ref=e84]:
+              - listitem [ref=e85]: —Applied subject matter expertise and analysis of metadata and circulation data to large-scale purchasing decisions at a research-one academic library.
+              - listitem [ref=e86]: "—Developed and taught courses in history and the humanities, including From Gutenberg to Google: Media Revolutions in Comparative Perspectives."
+              - listitem [ref=e87]: —Conducted research, grant writing, and translation work in English, German, and Dutch.
+    - generic [ref=e88]:
+      - paragraph [ref=e90]: Education
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - paragraph [ref=e94]: 2012–2014
+          - generic [ref=e95]:
+            - heading "University of British Columbia" [level=3] [ref=e96]
+            - paragraph [ref=e97]: MLIS — Library & Information Science
+        - generic [ref=e100]:
+          - heading "University of California, Los Angeles" [level=3] [ref=e101]
+          - paragraph [ref=e102]: MA, CPhil (ABD) — European History
+        - generic [ref=e105]:
+          - heading "Coding Dojo" [level=3] [ref=e106]
+          - paragraph [ref=e107]: Full Stack Developer
+        - generic [ref=e110]:
+          - heading "Seattle University" [level=3] [ref=e111]
+          - paragraph [ref=e112]: BA — History
+    - generic [ref=e113]:
+      - paragraph [ref=e115]: Skills & Languages
+      - generic [ref=e116]:
+        - paragraph [ref=e118]: Technical
+        - generic [ref=e119]:
+          - generic [ref=e120]: Knowledge Management
+          - generic [ref=e121]: Taxonomy & Ontology
+          - generic [ref=e122]: Information Architecture
+          - generic [ref=e123]: Technical Writing
+          - generic [ref=e124]: BigTable
+          - generic [ref=e125]: Apache Kafka
+          - generic [ref=e126]: Python
+          - generic [ref=e127]: JavaScript
+          - generic [ref=e128]: Ruby
+      - generic [ref=e129]:
+        - paragraph [ref=e131]: Languages
+        - generic [ref=e132]:
+          - generic [ref=e133]: English (native)
+          - generic [ref=e134]: German (professional working)
+          - generic [ref=e135]: Dutch (reading)
+    - generic [ref=e136]:
+      - paragraph [ref=e138]: Certifications
+      - list [ref=e141]:
+        - listitem [ref=e142]: —Advanced Programming in Python
+        - listitem [ref=e143]: —Professional Librarian's Life Certificate
+        - listitem [ref=e144]: —Certificate in Python Programming
+  - alert [ref=e145]

@@ -16,8 +16,16 @@ const bodyFont = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Kimberly Garmoe",
-  description: "Information architect building knowledge systems for AI.",
+  title: {
+    default: 'Kimberly Garmoe',
+    template: '%s — Kimberly Garmoe',
+  },
+  description: 'Information architect building knowledge systems for AI. Technical writing, taxonomy, retrieval.',
+  metadataBase: new URL('https://kimberlygarmoe.com'),
+  openGraph: {
+    siteName: 'Kimberly Garmoe',
+    locale: 'en_US',
+  },
 };
 
 export default function RootLayout({
