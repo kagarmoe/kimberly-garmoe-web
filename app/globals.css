@@ -9,7 +9,6 @@
   --color-surface: hsl(38 22% 82%);
   --color-olive: hsl(85 50% 18%);
   --color-mustard: hsl(40 80% 50%);
-  --color-royal: hsl(225 73% 57%);
   --color-ochre: hsl(38 70% 50%);
   --color-cream: hsl(40 45% 96%);
   --color-text-primary: hsl(20 22% 9%);
@@ -54,7 +53,7 @@
   }
 
   a {
-    color: var(--color-royal);
+    color: var(--color-text-primary);
   }
 
   a:hover {
