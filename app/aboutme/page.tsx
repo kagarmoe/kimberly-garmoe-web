@@ -112,20 +112,20 @@ export default function AboutPage() {
           </div>
           <div className="font-body text-body text-text-muted space-y-4">
             <p>
-              I'm an information architect expanding into knowledge systems for AI, with a foundation
+              I&apos;m an information architect expanding into knowledge systems for AI, with a foundation
               in taxonomy and structured content, refreshed by my MLIS background, and current work
               focused on ontology, retrieval, graphs, and knowledge-centered AI systems.
             </p>
             <p>
               My background spans complex technical domains, including security, cryptography, payments,
-              and identity systems. I'm particularly strong in information architecture, taxonomy, and
+              and identity systems. I&apos;m particularly strong in information architecture, taxonomy, and
               content governance for environments where clarity, correctness, and long-term
               maintainability matter.
             </p>
             <p>
-              I'm interested in the structures AI systems need in order to retrieve, reason over, and
+              I&apos;m interested in the structures AI systems need in order to retrieve, reason over, and
               use knowledge well. This next phase of my work connects information architecture with
-              ontology, retrieval, graphs, and RAG. I'm motivated by work that treats documentation
+              ontology, retrieval, graphs, and RAG. I&apos;m motivated by work that treats documentation
               and knowledge structures as infrastructure: precise, resilient, and designed to scale.
             </p>
           </div>
