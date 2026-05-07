@@ -34,7 +34,7 @@
 }
 
 @theme inline {
-  --font-display: var(--font-cormorant);
+  --font-display: var(--font-fraunces);
   --font-body: var(--font-lora);
   --font-mono: var(--font-lora);
 }

@@ -1,36 +1,12 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Fraunces, Bodoni_Moda, Cardo, Sorts_Mill_Goudy, Lora } from "next/font/google";
+import { Fraunces, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
 
-export const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-export const fraunces = Fraunces({
+const displayFont = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-});
-
-export const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-export const cardo = Cardo({
-  variable: "--font-cardo",
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
-
-export const sortsMillGoudy = Sorts_Mill_Goudy({
-  variable: "--font-goudy",
-  subsets: ["latin"],
-  weight: ["400"],
 });
 
 const bodyFont = Lora({
@@ -58,21 +34,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const allFontVars = [
-    playfair.variable,
-    fraunces.variable,
-    bodoni.variable,
-    cardo.variable,
-    sortsMillGoudy.variable,
-    bodyFont.variable,
-    // Default display to Playfair for the live site
-    "--font-display-current: var(--font-playfair)",
-  ].join(' ');
-
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${fraunces.variable} ${bodoni.variable} ${cardo.variable} ${sortsMillGoudy.variable} ${bodyFont.variable} antialiased`}
+      className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
     >
       <body className="md:pl-48">
         <a
