@@ -11,7 +11,7 @@ export default function BlogPage() {
 
   return (
     <main className="px-8 py-16 max-w-5xl mx-auto">
-      <div className="mb-16 border-t-[3px] border-accent pt-6">
+      <div className="mb-16 border-t-[3px] border-accent pt-6 bg-accent/8 -mx-8 px-8">
         <p className="font-display text-label uppercase text-text-muted mb-4">Writing</p>
         <h1 className="font-display text-heading text-text-primary">Essays & Notes</h1>
       </div>
