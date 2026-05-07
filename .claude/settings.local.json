@@ -26,7 +26,10 @@
       "Bash(gh search *)",
       "Bash(npm install *)",
       "Bash(npx shadcn@latest *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "Bash(pkill -f \"next dev\")"
     ]
   }
 }

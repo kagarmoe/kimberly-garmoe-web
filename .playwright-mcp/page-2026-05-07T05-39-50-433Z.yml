@@ -1,0 +1,6 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - heading "Kimberly Garmoe" [level=1] [ref=e3]
+    - paragraph [ref=e4]: Knowledge systems as infrastructure.
+    - paragraph [ref=e5]: Seattle, WA
+  - alert [ref=e6]
