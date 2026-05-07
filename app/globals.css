@@ -5,7 +5,7 @@
   /* Maximalist palette — forest + terracotta + warm linen */
   --color-ground: hsl(38 30% 91%);
   --color-surface: hsl(38 22% 82%);
-  --color-forest: hsl(163 38% 17%);
+  --color-forest: #11703a;
   --color-terracotta: hsl(14 58% 48%);
   --color-ochre: hsl(38 70% 50%);
   --color-cream: hsl(40 45% 96%);
