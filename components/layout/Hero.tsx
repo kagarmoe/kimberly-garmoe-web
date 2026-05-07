@@ -12,7 +12,7 @@ export function Hero() {
         <p className="font-display text-label uppercase tracking-widest text-text-muted">
           Seattle, WA
         </p>
-        <p className="font-body text-sm italic text-text-muted">
+        <p className="font-body text-sm italic text-text-primary">
           Information Architect · Knowledge Systems
         </p>
       </div>
@@ -66,11 +66,11 @@ export function Hero() {
       </div>
 
       {/* Bottom strip — nav echoes on mobile */}
-      <div className="relative z-10 mt-auto px-10 py-8 border-t border-surface flex gap-8 md:hidden">
+      <nav aria-label="Mobile navigation" className="relative z-10 mt-auto px-10 py-8 border-t border-surface flex gap-8 md:hidden">
         <a href="/aboutme" className="font-display text-label uppercase tracking-widest text-text-muted">About</a>
         <a href="/blog" className="font-display text-label uppercase tracking-widest text-text-muted">Writing</a>
         <a href="/projects" className="font-display text-label uppercase tracking-widest text-text-muted">Projects</a>
-      </div>
+      </nav>
 
     </section>
   )
