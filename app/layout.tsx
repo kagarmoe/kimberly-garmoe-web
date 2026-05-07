@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
@@ -15,6 +15,11 @@ const bodyFont = Lora({
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
