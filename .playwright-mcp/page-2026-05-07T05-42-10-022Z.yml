@@ -1,0 +1,18 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - link "Kimberly Garmoe" [ref=e3] [cursor=pointer]:
+      - /url: /
+    - list [ref=e4]:
+      - listitem [ref=e5]:
+        - link "About" [ref=e6] [cursor=pointer]:
+          - /url: /aboutme
+      - listitem [ref=e7]:
+        - link "Writing" [ref=e8] [cursor=pointer]:
+          - /url: /blog
+      - listitem [ref=e9]:
+        - link "Projects" [ref=e10] [cursor=pointer]:
+          - /url: /projects
+  - main [ref=e11]: kimberly-garmoe-web
+  - button "Open Next.js Dev Tools" [ref=e17] [cursor=pointer]:
+    - img [ref=e18]
+  - alert [ref=e21]
