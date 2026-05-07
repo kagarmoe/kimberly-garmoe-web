@@ -33,7 +33,9 @@
       "Bash(gh api *)",
       "Bash(go version *)",
       "Bash(~/go/bin/claude-trim scan *)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(vercel --version)",
+      "Bash(git push *)"
     ]
   }
 }
