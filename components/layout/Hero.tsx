@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function Hero() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] min-h-[80vh] overflow-hidden">
+    <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] min-h-[80vh]">
 
       {/* Left: text, vertically centered */}
       <div className="flex flex-col justify-center px-8 md:px-16 py-16">
@@ -27,16 +27,19 @@ export function Hero() {
         <div className="mt-12 border-t border-surface w-24" />
       </div>
 
-      {/* Right: natural photo fills the column */}
-      <div className="relative hidden md:block">
-        <Image
-          src="/images/headshot.jpeg"
-          alt="Kimberly Garmoe"
-          fill
-          priority
-          className="object-cover object-top"
-          style={{ display: 'block' }}
-        />
+      {/* Right: portrait, contained and face-focused */}
+      <div className="hidden md:flex items-center justify-center px-8 py-16">
+        <div className="relative w-64 h-80 overflow-hidden">
+          <Image
+            src="/images/headshot.jpeg"
+            alt="Kimberly Garmoe"
+            fill
+            priority
+            sizes="(max-width: 768px) 0px, 256px"
+            className="object-cover"
+            style={{ objectPosition: 'center 10%' }}
+          />
+        </div>
       </div>
 
     </section>
