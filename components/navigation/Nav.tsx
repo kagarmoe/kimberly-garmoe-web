@@ -8,19 +8,22 @@ const links = [
 
 export function Nav() {
   return (
-    <nav className="flex justify-between items-center px-8 py-6 border-b border-surface">
+    <nav className="hidden md:flex fixed left-0 top-0 h-screen w-48 bg-forest flex-col px-7 py-10 z-50">
       <Link
         href="/"
-        className="font-display text-label uppercase tracking-widest text-text-primary no-underline hover:text-accent transition-colors"
+        className="font-display text-2xl italic text-cream leading-snug no-underline hover:text-ochre transition-colors"
       >
-        Kimberly Garmoe
+        Kimberly<br />Garmoe
       </Link>
-      <ul className="flex gap-8 list-none m-0 p-0">
+
+      <div className="mt-8 border-t border-cream/20" />
+
+      <ul className="flex flex-col gap-5 list-none m-0 p-0 mt-auto pb-2">
         {links.map(({ href, label }) => (
           <li key={href}>
             <Link
               href={href}
-              className="font-display text-label uppercase tracking-widest text-text-muted no-underline hover:text-text-primary transition-colors"
+              className="font-display text-label uppercase tracking-widest text-cream/60 no-underline hover:text-cream transition-colors"
             >
               {label}
             </Link>

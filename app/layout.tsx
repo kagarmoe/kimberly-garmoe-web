@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Lora } from "next/font/google";
+import { Cormorant_Garamond, Lora } from "next/font/google";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
 
-const displayFont = Barlow_Condensed({
-  variable: "--font-barlow-condensed",
+const displayFont = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const bodyFont = Lora({
@@ -39,7 +40,7 @@ export default function RootLayout({
       lang="en"
       className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
     >
-      <body>
+      <body className="md:pl-48">
         <Nav />
         {children}
       </body>

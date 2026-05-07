@@ -2,22 +2,28 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Colors — warm ivory + deep navy */
-  --color-ground: hsl(40 28% 95%);
-  --color-surface: hsl(40 18% 87%);
-  --color-accent: hsl(222 45% 26%);
-  --color-text-primary: hsl(222 18% 10%);
-  --color-text-muted: hsl(222 10% 42%);
-  --color-teal: hsl(222 40% 40%);
+  /* Maximalist palette — forest + terracotta + warm linen */
+  --color-ground: hsl(38 30% 91%);
+  --color-surface: hsl(38 22% 82%);
+  --color-forest: hsl(163 38% 17%);
+  --color-terracotta: hsl(14 58% 48%);
+  --color-ochre: hsl(38 70% 50%);
+  --color-cream: hsl(40 45% 96%);
+  --color-text-primary: hsl(20 22% 9%);
+  --color-text-muted: hsl(20 12% 40%);
+
+  /* Aliases used by inner pages */
+  --color-accent: hsl(14 58% 48%);
+  --color-teal: hsl(163 32% 28%);
 
   /* Type scale */
-  --text-display: clamp(3.5rem, 10vw, 9rem);
+  --text-display: clamp(4rem, 11vw, 10rem);
   --text-display--line-height: 0.88;
   --text-display--letter-spacing: -0.02em;
 
-  --text-heading: clamp(1.75rem, 4vw, 3.5rem);
+  --text-heading: clamp(2rem, 5vw, 4rem);
   --text-heading--line-height: 1.0;
-  --text-heading--letter-spacing: -0.01em;
+  --text-heading--letter-spacing: -0.02em;
 
   --text-label: 0.6875rem;
   --text-label--line-height: 1;
@@ -28,9 +34,9 @@
 }
 
 @theme inline {
-  --font-display: var(--font-barlow-condensed);
+  --font-display: var(--font-cormorant);
   --font-body: var(--font-lora);
-  --font-mono: var(--font-barlow-condensed);
+  --font-mono: var(--font-lora);
 }
 
 @layer base {
@@ -43,7 +49,6 @@
     font-family: var(--font-lora), serif;
     font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
     line-height: 1.6;
-    position: relative;
   }
 
   a {
@@ -51,7 +56,7 @@
   }
 
   a:hover {
-    color: var(--color-accent);
+    color: var(--color-terracotta);
   }
 
   .section-rule {
@@ -59,6 +64,6 @@
   }
 
   .accent-rule {
-    border-top: 3px solid var(--color-accent);
+    border-top: 3px solid var(--color-terracotta);
   }
 }
