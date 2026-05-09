@@ -4,7 +4,7 @@ export default function Page() {
   return (
     <main>
       <Hero />
-      <section className="px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-surface">
+      <section className="hidden md:grid px-8 py-16 grid-cols-3 gap-0 border-t border-surface">
         {[
           { href: '/aboutme', label: 'About', desc: 'Background, experience, résumé' },
           { href: '/blog', label: 'Writing', desc: 'Essays and technical notes' },
