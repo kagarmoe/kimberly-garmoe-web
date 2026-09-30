@@ -1,14 +1,17 @@
 /**
- * Flow lines with beads travelling along them, laid over the banner.
+ * Gold flow lines with beads travelling along them, laid over the banner.
  * The viewBox matches the banner's pixel size and uses `slice`, so the paths
  * crop exactly like the image underneath (object-cover). Pure SVG + SMIL, no JS.
- * Lines start green on the cream side and turn gold behind the headshot.
+ * Beads start green on the cream side and turn gold as they pass the headshot.
  * Hidden under prefers-reduced-motion via the .flow-lines rule in globals.css.
  */
+
+// Right-hand tails avoid the title block (x > 1450, y 480–560) so beads never
+// sit behind the small mono text. Path 2 threads the gap between name and title.
 const paths = [
   'M-40,300 C260,230 520,420 820,350 S1320,230 1960,290',
-  'M-40,390 C320,320 600,520 900,430 S1420,380 1960,430',
-  'M-40,470 C300,400 640,600 980,510 S1500,470 1960,520',
+  'M-40,390 C320,320 600,520 900,430 S1420,380 1960,420',
+  'M-40,470 C300,400 640,600 980,510 S1500,455 1960,450',
 ]
 
 // ponytail: three fixed curves eyeballed against the banner, not traced.
@@ -22,14 +25,12 @@ const beads = [
   { path: 2, dur: '25s', begin: '-15s', r: 9 },
 ]
 
-// Headshot sits at roughly x=460–885 in banner coordinates; the green→gold
-// crossfade spans that band so the change happens behind it.
-const stops = [
-  { offset: '0%', color: 'hsl(165 35% 40%)' },
-  { offset: '24%', color: 'hsl(165 35% 40%)' },
-  { offset: '46%', color: 'var(--color-gold)' },
-  { offset: '100%', color: 'var(--color-gold)' },
-]
+const green = 'hsl(165 35% 40%)'
+const gold = 'hsl(40 70% 55%)'
+// Paths run left to right at roughly constant speed, so time ≈ x. The
+// headshot spans about 24%–46% of the width; the colour crossfades there.
+const colorKeyTimes = '0;0.24;0.46;1'
+const colorValues = `${green};${green};${gold};${gold}`
 
 export function FlowLines() {
   return (
@@ -40,9 +41,6 @@ export function FlowLines() {
       preserveAspectRatio="xMidYMid slice"
     >
       <defs>
-        <linearGradient id="flow-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1920" y2="0">
-          {stops.map(s => <stop key={s.offset} offset={s.offset} stopColor={s.color} />)}
-        </linearGradient>
         <filter id="bead-glow" x="-200%" y="-200%" width="500%" height="500%">
           <feGaussianBlur stdDeviation="3" result="b" />
           <feMerge>
@@ -53,14 +51,22 @@ export function FlowLines() {
       </defs>
 
       {paths.map((d, i) => (
-        <path key={i} id={`flow-${i}`} d={d} fill="none" stroke="url(#flow-grad)" strokeWidth="1.75" opacity="0.7" />
+        <path key={i} id={`flow-${i}`} d={d} fill="none" stroke={gold} strokeWidth="1.75" opacity="0.6" />
       ))}
 
       {beads.map(({ path, dur, begin, r }, i) => (
-        <circle key={i} r={r} fill="var(--color-gold)" filter="url(#bead-glow)">
+        <circle key={i} r={r} fill={green} filter="url(#bead-glow)">
           <animateMotion dur={dur} begin={begin} repeatCount="indefinite" rotate="auto">
             <mpath href={`#flow-${path}`} />
           </animateMotion>
+          <animate
+            attributeName="fill"
+            values={colorValues}
+            keyTimes={colorKeyTimes}
+            dur={dur}
+            begin={begin}
+            repeatCount="indefinite"
+          />
         </circle>
       ))}
     </svg>
