@@ -96,7 +96,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     .fragments { animation: none; opacity: 0.85; transform: rotate(-3deg); }
-    .flow-lines { display: none; }
     * { transition-duration: 0ms !important; }
   }
 }

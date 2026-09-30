@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { FlowLines } from './FlowLines'
 
 const fragments = `kms.rotate(key) ?? rfc5280
   identity ⇄ trust boundary
@@ -20,7 +19,6 @@ export function Hero() {
         sizes="100vw"
         className="object-cover object-center"
       />
-      <FlowLines />
       {/* Legibility overlay: light from the bottom on mobile, none on desktop */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent md:hidden" />
 
