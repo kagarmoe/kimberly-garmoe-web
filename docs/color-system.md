@@ -1,73 +1,73 @@
 # Color System
 
+## Anchors
+
+The palette derives from two images, in this order:
+
+1. **The banner** (`public/images/banner.jpg`): cream and gold particles on
+   the left resolving into connected network lines over deep teal-green on the
+   right. It is the home hero and appears as a thin strip under the nav on
+   every inner page.
+2. **The headshot** (`public/images/headshot.jpeg`): mustard blazer, apricot
+   hair, warm gray ground. It sits on the banner, so any color must coexist
+   with both.
+
 ## Palette
 
-The palette is anchored to the headshot: mustard blazer, warm olive tones, cream ground.
+Defined as Tailwind theme tokens in `app/globals.css`.
 
 | Token | Value | Role |
 |-------|-------|------|
-| `--color-ground` | hsl(38, 30%, 91%) | Page background |
-| `--color-surface` | hsl(38, 22%, 82%) | Dividers, borders |
-| `--color-olive` | hsl(85, 50%, 18%) | Sidebar background |
-| `--color-mustard` | hsl(40, 80%, 50%) | Accent, decoration |
-| `--color-ochre` | hsl(38, 70%, 50%) | Nav hover |
-| `--color-cream` | hsl(40, 45%, 96%) | Text on dark backgrounds |
-| `--color-text-primary` | hsl(20, 22%, 9%) | Body text |
-| `--color-text-muted` | hsl(20, 12%, 40%) | Secondary text, labels |
-| `--color-accent` | hsl(40, 80%, 50%) | Alias for mustard; inner page headers |
-
-## Headshot anchors
-
-These are fixed — the palette derives from them, not the other way around:
-
-- **Mustard blazer** → `--color-mustard` hsl(40, 80%, 50%)
-- **Apricot hair** → warm golden-orange, approx hsl(28–33°, 80%, 68%); echoes the mustard blazer at lighter value
-
-Any new color must coexist with these. The headshot is always present on the homepage; inner pages inherit the system.
+| `--color-paper` | hsl(42 45% 87%) | Inner-page ground |
+| `--color-ink` | hsl(178 35% 13%) | Nav bar, display type on paper, hero dark side |
+| `--color-ink-muted` | hsl(178 20% 32%) | Secondary text on paper |
+| `--color-gold` | hsl(40 70% 55%) | The single accent: signature italic, hover, active nav, list dashes |
+| `--color-ochre` | hsl(38 65% 27%) | Small mono marks on paper where gold is too light (status labels, table keys); clears AA at label size |
+| `--color-cream` | hsl(42 60% 94%) | Type on ink, headshot outline |
+| `--color-line` | ink at 11% | Grid hairlines and dividers |
 
 ## Allowed combinations
 
 | Foreground | Background | Use |
 |-----------|-----------|-----|
-| `text-primary` | `ground` | Body text |
-| `text-muted` | `ground` | Labels, secondary |
-| `cream` | `olive` | Nav text |
-| `ochre` | `olive` | Nav hover |
-| `mustard` | `ground` | Accent borders, washes |
-| `text-primary` | `surface` | Cards, dividers |
+| `ink` | `paper` | Body text, headings |
+| `ink-muted` | `paper` | Secondary text, labels |
+| `cream` | `ink` | Nav text, hero name and tagline |
+| `gold` | `ink` | Hover, active nav, signature word |
+| `ochre` | `paper` | Small mono labels |
+| `ink` | `banner` (cream side) | Hero fragments, with a cream text halo |
 
-Never put `text-muted` on `surface` — contrast drops below AA.
+Never put `gold` on `paper` for text smaller than heading size; it fails AA.
+`ink-muted` is a real color, not `ink` at reduced opacity, so it stays
+predictable over the grid hairlines.
+
+## Type
+
+| Token | Face | Job |
+|-------|------|-----|
+| `--font-display` | Bricolage Grotesque, 300 and 800 | Name, page titles, entry titles |
+| `--font-body` | Geist | Body and UI |
+| `--font-mono` | IBM Plex Mono | All small labels, dates, tags, fragments |
+| `--font-signature` | Instrument Serif italic | Only the words "actually use." in the hero |
 
 ## Design decisions
 
-- **No royal blue.** Navy was tried and rejected — it fights the warm palette.
-- **Olive, not forest green.** Yellow-leaning (hsl 85°) to stay warm-side; forest green at hsl 140° read as Christmas paired with mustard.
-- **Mustard is structural, not decorative.** It appears in section header washes (`bg-accent/8`), borders, and hover states — enough presence that the hover color references something already visible.
-- **Ochre for nav hover** (hsl 38°, slightly darker than mustard) — a warm pop against the dark olive sidebar rather than a stark jump to a different hue.
+- **Gold is the only accent.** It appears once per view at most: the
+  signature word, a hover, an active underline. Restraint everywhere else is
+  what makes it land.
+- **Ink comes from the banner, not the old olive.** The teal-green reads as the
+  same family as the retired olive nav but with more depth, and it ties the
+  site to the LinkedIn banner.
+- **The grid is visible.** Twelve hairline columns on inner pages, desktop
+  only. The subject is ordering information, so the structure shows.
+- **The fragments are the "messy" half.** Skewed monospace snippets over the
+  cream side of the hero, animated once on load, hidden on mobile.
+- **No royal blue.** Kept from the previous system. Navy was tried and
+  rejected; it fights the warm side.
 
-## Cyclic scheme (reference)
+## Retired
 
-If the palette ever needs extending, the 8-step cyclic scheme anchored to mustard (45° intervals, saturation 0.6, lightness +0.13 from anchor) gives these harmonics:
-
-| Hue | Hex | Name |
-|-----|-----|------|
-| 40° | `#E5B75B` | Amber |
-| 85° | `#ACE55B` | Yellow-green |
-| 130° | `#5BE572` | Green |
-| 175° | `#5BE5DA` | Turquoise |
-| 220° | `#5B89E5` | Cornflower blue |
-| 265° | `#955BE5` | Medium purple |
-| 310° | `#E55BCE` | Orchid |
-| 355° | `#E55B67` | Soft red |
-
-Names cross-referenced against CSS named colors (MDN). Turquoise and Cornflower blue are near-exact matches; the others are closest approximations.
-
-## Seasonal palette context
-
-This palette sits in **Warm Spring** — warm, clear, moderately saturated. That seasonal frame rules out:
-
-- Cool hues (blue-violet, icy tones) — fight the warm ground
-- Muted/dusty colors — feel heavy against the cream and mustard
-- High-contrast darks beyond `text-primary` — break the lightness register
-
-When extending: stay in the 20–130° hue band for warm additions, or pull from the cyclic scheme above with justification for why the hue earns a role.
+The olive / mustard / cream sidebar system (2026-09) and its tokens
+`ground`, `surface`, `olive`, `mustard`, `ochre`(old), `accent`,
+`text-primary`, `text-muted`. See git history before the redesign spec in
+`docs/superpowers/specs/2026-09-30-site-redesign-design.md`.

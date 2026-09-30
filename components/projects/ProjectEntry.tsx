@@ -10,28 +10,19 @@ const statusLabel: Record<Project['status'], string> = {
 
 export function ProjectEntry({ project }: { project: Project }) {
   return (
-    <article className="py-10 border-b border-surface">
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
-        <div>
-          <p className="font-display text-label uppercase text-text-muted">
-            {statusLabel[project.status]}
-          </p>
-          {project.tech && (
-            <p className="font-display text-label text-text-muted mt-2 normal-case tracking-normal">
-              {project.tech.join(', ')}
-            </p>
-          )}
+    <article className="py-8 md:py-10 border-b border-line">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-3 md:gap-16">
+        <div className="font-mono text-[0.8rem] leading-relaxed">
+          <p className="label text-ochre">{statusLabel[project.status]}</p>
+          {project.tech && <p className="text-ink-muted mt-1">{project.tech.join(', ')}</p>}
         </div>
         <div>
-          <h2 className="font-display text-heading text-text-primary mb-3">
-            <Link
-              href={`/projects/${project.slug}`}
-              className="no-underline hover:text-accent transition-colors"
-            >
+          <h2 className="font-display font-extrabold text-heading text-ink mb-3">
+            <Link href={`/projects/${project.slug}`} className="no-underline hover:text-gold transition-colors">
               {project.title}
             </Link>
           </h2>
-          <p className="font-body text-body text-text-muted">{project.description}</p>
+          <p className="text-ink-muted max-w-prose">{project.description}</p>
         </div>
       </div>
     </article>
