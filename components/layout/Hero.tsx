@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { FlowLines } from './FlowLines'
 
 const fragments = `kms.rotate(key) ?? rfc5280
   identity ⇄ trust boundary
@@ -9,7 +10,8 @@ const fragments = `kms.rotate(key) ?? rfc5280
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-ink text-cream min-h-[calc(100svh-3.5rem)]">
+    // Desktop height tracks the banner's own ratio (18:7 ≈ 2.57) so the image is barely scaled.
+    <section className="relative overflow-hidden bg-ink text-cream min-h-[calc(100svh-3.5rem)] md:min-h-0 md:aspect-[18/7]">
       <Image
         src="/images/banner.jpg"
         alt=""
@@ -18,6 +20,7 @@ export function Hero() {
         sizes="100vw"
         className="object-cover object-center"
       />
+      <FlowLines />
       {/* Legibility overlay: light from the bottom on mobile, none on desktop */}
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/30 to-transparent md:hidden" />
 
@@ -54,7 +57,7 @@ export function Hero() {
           />
         </div>
 
-        <p className="text-cream text-lg leading-snug max-w-sm md:absolute md:right-10 md:bottom-10 md:text-right">
+        <p className="text-cream text-lg leading-snug max-w-sm md:max-w-md md:absolute md:right-10 md:bottom-10 md:text-right">
           Turning messy technical information into knowledge people and AI systems can{' '}
           <em className="font-signature not-italic text-gold text-[1.15em]">actually use.</em>
         </p>

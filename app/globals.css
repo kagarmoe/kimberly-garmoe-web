@@ -14,7 +14,7 @@
   --color-line: hsl(178 35% 13% / 0.11);
 
   /* Type scale */
-  --text-display: clamp(4.5rem, 13vw, 12rem);
+  --text-display: clamp(4.5rem, 11vw, 10rem);
   --text-display--line-height: 0.86;
   --text-display--letter-spacing: -0.045em;
 
@@ -96,6 +96,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .fragments { animation: none; opacity: 0.85; transform: rotate(-3deg); }
+    .flow-lines { display: none; }
     * { transition-duration: 0ms !important; }
   }
 }
