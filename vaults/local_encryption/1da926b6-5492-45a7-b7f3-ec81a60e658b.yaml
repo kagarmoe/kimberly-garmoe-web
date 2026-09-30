@@ -1,0 +1,7 @@
+id: 1da926b6-5492-45a7-b7f3-ec81a60e658b
+name: secrets
+type: local_encryption
+config:
+  auto_generate: true
+  base_dir: /Users/kimberlygarmoe/repos/kimberly-garmoe-web
+createdAt: '2026-09-30T21:45:38.630Z'

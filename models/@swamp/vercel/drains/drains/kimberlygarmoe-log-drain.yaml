@@ -1,0 +1,14 @@
+type: '@swamp/vercel/drains/drains'
+typeVersion: 2026.08.03.3
+id: 43d0c5f4-b921-4674-b3c6-e2cf60ec3a6c
+name: kimberlygarmoe-log-drain
+version: 1
+tags: {}
+globalArguments:
+  teamId: team_SMACO8iOr6wPIGx5as56P468
+  token: ${{ vault.get("secrets", "vercel-token") }}
+  name: Axiom Log Drain
+methods:
+  adopt:
+    arguments:
+      id: drn_WA8ur8cHQtsxvzEQ

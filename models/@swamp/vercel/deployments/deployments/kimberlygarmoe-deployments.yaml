@@ -1,0 +1,11 @@
+type: '@swamp/vercel/deployments/deployments'
+typeVersion: 2026.09.25.1
+id: e0ed7046-3500-4963-b4ec-26408cda05ae
+name: kimberlygarmoe-deployments
+version: 1
+tags: {}
+globalArguments:
+  teamId: team_SMACO8iOr6wPIGx5as56P468
+  name: kimberly-garmoe-web
+  token: ${{ vault.get("secrets", "vercel-token") }}
+methods: {}
