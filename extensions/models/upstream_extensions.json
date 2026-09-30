@@ -32,5 +32,20 @@
     "checksum": "1fad498a659f0d9969793724cb2d99682d464e8baadc505990bd9f6f45cdea24",
     "filesChecksum": "e2ebe07f4c1151e2c3e143c40aff37d877bfe3a7e03b3ea16df039ea510d1be4",
     "serverUrl": "https://swamp-club.com"
+  },
+  "@swamp/vercel/drains": {
+    "version": "2026.08.03.3",
+    "pulledAt": "2026-09-30T22:06:19.739Z",
+    "files": [
+      ".swamp/bundles/d79aefe7/drains.js",
+      ".swamp/pulled-extensions/@swamp/vercel/drains/files/LICENSE.txt",
+      ".swamp/pulled-extensions/@swamp/vercel/drains/files/README.md",
+      ".swamp/pulled-extensions/@swamp/vercel/drains/manifest.yaml",
+      ".swamp/pulled-extensions/@swamp/vercel/drains/models/_lib/vercel.ts",
+      ".swamp/pulled-extensions/@swamp/vercel/drains/models/drains.ts"
+    ],
+    "checksum": "9178b18edb97f0f38af838dfcfd0da8a241c520de2519a9dd4347c67966b85b4",
+    "filesChecksum": "b580ac7b9fdf3c6269665c0831aebf60af515d8a1409cb12c83f9aaa86e75abc",
+    "serverUrl": "https://swamp-club.com"
   }
 }
