@@ -1,4 +1,7 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const links = [
   { href: '/aboutme', label: 'About' },
@@ -7,28 +10,37 @@ const links = [
 ]
 
 export function Nav() {
+  const pathname = usePathname()
+
   return (
-    <nav aria-label="Primary navigation" className="hidden md:flex fixed left-0 top-0 h-screen w-48 bg-olive flex-col px-7 py-10 z-50">
+    <nav
+      aria-label="Primary navigation"
+      className="sticky top-0 z-50 h-14 bg-ink text-cream flex items-center justify-between px-5 md:px-10"
+    >
       <Link
         href="/"
-        className="font-display text-2xl text-cream leading-snug no-underline hover:text-ochre transition-colors"
+        className="font-display font-bold text-lg tracking-tight no-underline hover:text-gold transition-colors"
       >
-        Kimberly<br />Garmoe
+        Kimberly Garmoe
       </Link>
 
-      <div className="mt-8 border-t border-cream/20" />
-
-      <ul className="flex flex-col gap-5 list-none m-0 p-0 mt-auto pb-2">
-        {links.map(({ href, label }) => (
-          <li key={href}>
-            <Link
-              href={href}
-              className="font-display text-sm uppercase tracking-widest text-cream no-underline hover:text-ochre transition-colors"
-            >
-              {label}
-            </Link>
-          </li>
-        ))}
+      <ul className="flex gap-5 md:gap-8 list-none m-0 p-0">
+        {links.map(({ href, label }) => {
+          const active = pathname.startsWith(href)
+          return (
+            <li key={href}>
+              <Link
+                href={href}
+                aria-current={active ? 'page' : undefined}
+                className={`label no-underline transition-colors hover:text-gold pb-1 border-b-2 ${
+                  active ? 'border-gold text-gold' : 'border-transparent'
+                }`}
+              >
+                {label}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )

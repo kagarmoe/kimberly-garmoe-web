@@ -2,69 +2,131 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Palette — olive (structure) + mustard (decoration) + royal blue (interaction)
-     Olive and mustard share the warm side of the wheel.
-     Royal blue is the cool counterpoint — links only. */
-  --color-ground: hsl(38 30% 91%);
-  --color-surface: hsl(38 22% 82%);
-  --color-olive: hsl(85 50% 18%);
-  --color-mustard: hsl(40 80% 50%);
-  --color-ochre: hsl(38 70% 50%);
-  --color-cream: hsl(40 45% 96%);
-  --color-text-primary: hsl(20 22% 9%);
-  --color-text-muted: hsl(20 12% 40%);
-
-  /* Aliases used by inner pages */
-  --color-accent: hsl(40 80% 50%);
+  /* Palette — derived from the banner (public/images/banner.jpg):
+     cream and gold on the messy side, deep teal-green on the structured side.
+     Gold is the single accent. See docs/color-system.md. */
+  --color-paper: hsl(42 45% 87%);
+  --color-ink: hsl(178 35% 13%);
+  --color-ink-muted: hsl(178 20% 32%);
+  --color-gold: hsl(40 70% 55%);
+  --color-ochre: hsl(38 65% 27%); /* ≥ 4.5:1 on paper for small text */
+  --color-cream: hsl(42 60% 94%);
+  --color-line: hsl(178 35% 13% / 0.11);
 
   /* Type scale */
-  --text-display: clamp(4rem, 11vw, 10rem);
-  --text-display--line-height: 0.88;
-  --text-display--letter-spacing: -0.02em;
+  --text-display: clamp(4.5rem, 11vw, 10rem);
+  --text-display--line-height: 0.86;
+  --text-display--letter-spacing: -0.045em;
 
-  --text-heading: clamp(2rem, 5vw, 4rem);
-  --text-heading--line-height: 1.0;
-  --text-heading--letter-spacing: -0.02em;
+  --text-heading: clamp(2.5rem, 7vw, 5.5rem);
+  --text-heading--line-height: 0.9;
+  --text-heading--letter-spacing: -0.04em;
+
+  --text-title: clamp(1.75rem, 4vw, 3rem);
+  --text-title--line-height: 0.95;
+  --text-title--letter-spacing: -0.03em;
 
   --text-label: 0.6875rem;
-  --text-label--line-height: 1;
-  --text-label--letter-spacing: 0.14em;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
 
   --text-body: clamp(0.9375rem, 1.5vw, 1.0625rem);
-  --text-body--line-height: 1.6;
+  --text-body--line-height: 1.55;
 }
 
 @theme inline {
-  --font-display: var(--font-fraunces);
-  --font-body: var(--font-lora);
-  --font-mono: var(--font-lora);
+  --font-display: var(--font-bricolage);
+  --font-body: var(--font-geist);
+  --font-mono: var(--font-plex-mono);
+  --font-signature: var(--font-instrument-serif);
 }
 
 @layer base {
   html {
-    background-color: var(--color-ground);
-    color: var(--color-text-primary);
+    background-color: var(--color-paper);
+    color: var(--color-ink);
   }
 
   body {
-    font-family: var(--font-lora), serif;
-    font-size: clamp(0.9375rem, 1.5vw, 1.0625rem);
-    line-height: 1.6;
+    font-family: var(--font-geist), sans-serif;
+    font-size: var(--text-body);
+    line-height: 1.55;
   }
 
   a {
-    color: var(--color-text-primary);
+    color: inherit;
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 0.2em;
   }
 
   a:hover {
-    color: var(--color-mustard);
+    color: var(--color-gold);
   }
 
-  .section-rule {
-    border-top: 1px solid var(--color-surface);
+  .font-display {
+    font-optical-sizing: auto;
+  }
+}
+
+/* Twelve-column grid shown as hairlines. Declared as a utility so md: variants work. */
+@utility grid-lines {
+  background-image: linear-gradient(to right, var(--color-line) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
+  background-position: -1px 0;
+}
+
+@layer utilities {
+  .label {
+    font-family: var(--font-plex-mono), monospace;
+    font-size: var(--text-label);
+    line-height: var(--text-label--line-height);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
   }
 
-  .accent-rule {
-    border-top: 3px solid var(--color-mustard);
+  .fragments {
+    animation: settle 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    text-shadow: 0 0 8px var(--color-cream), 0 0 2px var(--color-cream);
   }
+
+  @keyframes settle {
+    from { opacity: 0; transform: rotate(-6deg) translateY(-6px); }
+    to   { opacity: 0.85; transform: rotate(-3deg) translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fragments { animation: none; opacity: 0.85; transform: rotate(-3deg); }
+    * { transition-duration: 0ms !important; }
+  }
+}
+
+/* Prose (MDX bodies): ink text, display headings, gold links. */
+.prose {
+  --tw-prose-body: var(--color-ink);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-links: var(--color-ink);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-counters: var(--color-ink-muted);
+  --tw-prose-bullets: var(--color-gold);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-gold);
+  --tw-prose-code: var(--color-ink);
+  --tw-prose-pre-code: var(--color-cream);
+  --tw-prose-pre-bg: var(--color-ink);
+}
+
+.prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-bricolage), sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.prose a {
+  text-decoration-color: var(--color-gold);
+  text-decoration-thickness: 2px;
+}
+
+.prose code {
+  font-family: var(--font-plex-mono), monospace;
 }

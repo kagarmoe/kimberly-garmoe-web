@@ -1,0 +1,17 @@
+name: Link check
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+jobs:
+  links:
+    # Vercel marks the production deployment's environment "Production".
+    # Previews are behind Vercel Authentication, so only production is crawled.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - run: npx --yes linkinator https://kimberlygarmoe.com --recurse --verbosity error

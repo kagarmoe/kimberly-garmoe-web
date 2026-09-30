@@ -1,9 +1,23 @@
 import type { Metadata } from 'next'
+import { Page, PageHeader } from '@/components/layout/PageHeader'
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Information architect and technical writer focused on knowledge systems for AI.',
+  description: 'Turning messy technical information into knowledge people and AI systems can actually use.',
 }
+
+const intro = [
+  "I'm interested in a deceptively difficult problem: how do we turn messy technical information into knowledge that people and AI systems can actually use?",
+  'I spent much of my career doing this for humans. At AWS and Chef, I worked inside complex infrastructure environments, including cryptography, identity, security, infrastructure automation, APIs, and developer tooling, figuring out how systems actually worked and turning that understanding into usable technical knowledge.',
+  "Now I'm applying the same problem-solving approach to AI systems: knowledge representation, retrieval and RAG, knowledge graphs, ontology, evaluation, and agentic workflows.",
+  "My recent work includes building data pipelines in Spark and Databricks; experimenting with small local LLMs and retrieval systems; and developing projects around extracting structured knowledge from software and enterprise information environments. I'm particularly interested in the layer between raw information and an AI application: how knowledge is derived, represented, retrieved, evaluated, and kept trustworthy enough to use.",
+  "I bring an unusual combination of technical writing, library science, software and information work, and years of experience collaborating directly with engineers on difficult systems. I'm increasingly interested in customer-facing technical roles where I can understand a customer's environment, identify the real problem, and help them make complex technology work in practice. I like the space between product, engineering, and the people actually trying to use what we build.",
+]
+
+const interests = [
+  'Agentic AI', 'AI solutions', 'Knowledge systems', 'RAG & retrieval',
+  'Knowledge graphs', 'Ontology', 'Evaluation', 'Developer infrastructure',
+]
 
 const experience = [
   {
@@ -38,7 +52,7 @@ const experience = [
     description: [
       'Led the consolidation of product documentation from several microsites into a single website while maintaining source files in separate GitHub repositories.',
       'Managed a global team in a rapidly changing environment.',
-      'The consolidated site featured federated search and automation for reference material — ensuring content stayed current, correct, and complete.',
+      'The consolidated site featured federated search and automation for reference material, ensuring content stayed current, correct, and complete.',
     ],
   },
   {
@@ -72,7 +86,7 @@ const education = [
 
 const skills = [
   'Knowledge Management', 'Taxonomy & Ontology', 'Information Architecture',
-  'Technical Writing', 'BigTable', 'Apache Kafka', 'Python', 'JavaScript', 'Ruby',
+  'Technical Writing', 'Spark', 'Databricks', 'BigTable', 'Apache Kafka', 'Python', 'JavaScript', 'Ruby',
 ]
 const languages = ['English (native)', 'German (professional working)', 'Dutch (reading)']
 const certifications = [
@@ -81,160 +95,122 @@ const certifications = [
   'Certificate in Python Programming',
 ]
 
+function Section({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <section className="mb-20">
+      <div className="border-t border-line pt-6 mb-10">
+        <p className="label text-ink-muted">{label}</p>
+      </div>
+      {children}
+    </section>
+  )
+}
+
+const row = 'grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16'
+
 export default function AboutPage() {
   return (
-    <main className="px-8 py-16 max-w-5xl mx-auto">
+    <Page>
+        <PageHeader eyebrow="About" title="Kimberly Garmoe" subtitle="Messy in, usable out." />
 
-      {/* Narrative summary */}
-      <section className="mb-20">
-        <div className="border-t-[3px] border-accent pt-6 bg-accent/8 -mx-8 px-8 mb-8">
-          <p className="font-display text-label uppercase text-text-muted mb-4">About</p>
-          <h1 className="font-display text-heading text-text-primary">Kimberly Garmoe</h1>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
-          <div>
-            <p className="font-display text-label uppercase text-text-muted">Seattle, WA</p>
-            <p className="font-display text-label uppercase text-text-muted mt-2">
-              <a href="mailto:kagarmoe@gmail.com" className="hover:text-accent transition-colors">
-                Contact
-              </a>
-            </p>
-            <p className="font-display text-label uppercase text-text-muted mt-2">
-              <a href="https://linkedin.com/in/kimberlygarmoe" className="hover:text-accent transition-colors">
-                LinkedIn ↗
-              </a>
-            </p>
-            <p className="font-display text-label uppercase text-text-muted mt-2">
-              <a href="https://github.com/kagarmoe" className="hover:text-accent transition-colors">
-                GitHub ↗
-              </a>
-            </p>
-          </div>
-          <div className="font-body text-body text-text-muted space-y-4">
-            <p>
-              I&apos;m an information architect expanding into knowledge systems for AI, with a foundation
-              in taxonomy and structured content, refreshed by my MLIS background, and current work
-              focused on ontology, retrieval, graphs, and knowledge-centered AI systems.
-            </p>
-            <p>
-              My background spans complex technical domains, including security, cryptography, payments,
-              and identity systems. I&apos;m particularly strong in information architecture, taxonomy, and
-              content governance for environments where clarity, correctness, and long-term
-              maintainability matter.
-            </p>
-            <p>
-              I&apos;m interested in the structures AI systems need in order to retrieve, reason over, and
-              use knowledge well. This next phase of my work connects information architecture with
-              ontology, retrieval, graphs, and RAG. I&apos;m motivated by work that treats documentation
-              and knowledge structures as infrastructure: precise, resilient, and designed to scale.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section className="mb-20">
-        <div className="border-t border-surface pt-8 mb-12">
-          <p className="font-display text-label uppercase text-text-muted">Experience</p>
-        </div>
-        <div className="space-y-16">
-          {experience.map(({ company, role, period, location, description }) => (
-            <div key={company} className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
+        <section className="mb-20">
+          <div className={row}>
+            <div className="space-y-6">
               <div>
-                <p className="font-display text-label uppercase text-text-muted leading-relaxed">
-                  {period}
-                </p>
-                <p className="font-display text-label text-text-muted mt-1 normal-case tracking-normal">
-                  {location}
-                </p>
+                <p className="label text-ink-muted mb-1">Based in</p>
+                <p>Seattle, WA</p>
               </div>
               <div>
-                <h2 className="font-display text-xl text-text-primary mb-1">{company}</h2>
-                <p className="font-display text-label uppercase text-text-muted mb-4">{role}</p>
-                <ul className="font-body text-body text-text-muted space-y-2 list-none p-0">
-                  {description.map((item, i) => (
-                    <li key={i} className="before:content-['—'] before:mr-2 before:text-text-muted">
-                      {item}
-                    </li>
-                  ))}
+                <p className="label text-ink-muted mb-1">Find me</p>
+                <ul className="list-none m-0 p-0 space-y-1">
+                  <li><a href="mailto:kagarmoe@gmail.com">Email ↗</a></li>
+                  <li><a href="https://linkedin.com/in/kimberlygarmoe">LinkedIn ↗</a></li>
+                  <li><a href="https://github.com/kagarmoe">GitHub ↗</a></li>
                 </ul>
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Education */}
-      <section className="mb-20">
-        <div className="border-t border-surface pt-8 mb-12">
-          <p className="font-display text-label uppercase text-text-muted">Education</p>
-        </div>
-        <div className="space-y-8">
-          {education.map(({ school, degree, years }) => (
-            <div key={school} className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
               <div>
-                {years && (
-                  <p className="font-display text-label uppercase text-text-muted">{years}</p>
-                )}
-              </div>
-              <div>
-                <h3 className="font-display text-lg text-text-primary mb-1">{school}</h3>
-                <p className="font-display text-label text-text-muted normal-case tracking-normal">{degree}</p>
+                <p className="label text-ink-muted mb-1">Open to</p>
+                <p>Customer-facing technical roles</p>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Skills & Languages */}
-      <section className="mb-20">
-        <div className="border-t border-surface pt-8 mb-12">
-          <p className="font-display text-label uppercase text-text-muted">Skills & Languages</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
-          <div>
-            <p className="font-display text-label uppercase text-text-muted">Technical</p>
+            <div className="space-y-5 text-ink max-w-prose">
+              {intro.map((p, i) => (
+                <p key={i} className={i === 0 ? 'font-display font-medium text-xl md:text-2xl leading-snug tracking-tight' : ''}>
+                  {p}
+                </p>
+              ))}
+              <div className="flex flex-wrap gap-2 pt-2">
+                {interests.map(t => (
+                  <span key={t} className="label text-ink border border-ink px-2.5 py-1.5">{t}</span>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            {skills.map(skill => (
-              <span
-                key={skill}
-                className="font-display text-label uppercase text-text-muted border border-surface px-3 py-1"
-              >
-                {skill}
-              </span>
+        </section>
+
+        <Section label="Experience">
+          <div className="space-y-14">
+            {experience.map(({ company, role, period, location, description }) => (
+              <div key={company} className={row}>
+                <div className="font-mono text-[0.8rem] text-ink-muted leading-relaxed">
+                  <p>{period}</p>
+                  <p>{location}</p>
+                </div>
+                <div>
+                  <h2 className="font-display font-extrabold text-title text-ink mb-1">{company}</h2>
+                  <p className="label text-ink-muted mb-4">{role}</p>
+                  <ul className="space-y-2 list-none p-0 max-w-prose">
+                    {description.map((item, i) => (
+                      <li key={i} className="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-gold">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16 mt-8">
-          <div>
-            <p className="font-display text-label uppercase text-text-muted">Languages</p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            {languages.map(lang => (
-              <span key={lang} className="font-body text-body text-text-muted">{lang}</span>
+        </Section>
+
+        <Section label="Education">
+          <div className="space-y-8">
+            {education.map(({ school, degree, years }) => (
+              <div key={school} className={row}>
+                <p className="font-mono text-[0.8rem] text-ink-muted">{years}</p>
+                <div>
+                  <h3 className="font-display font-extrabold text-xl text-ink mb-1">{school}</h3>
+                  <p className="text-ink-muted">{degree}</p>
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
+        </Section>
 
-      {/* Certifications */}
-      <section className="mb-20">
-        <div className="border-t border-surface pt-8 mb-12">
-          <p className="font-display text-label uppercase text-text-muted">Certifications</p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
-          <div />
-          <ul className="font-body text-body text-text-muted space-y-2 list-none p-0">
-            {certifications.map(cert => (
-              <li key={cert} className="before:content-['—'] before:mr-2 before:text-text-muted">
-                {cert}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        <Section label="Skills & Languages">
+          <div className={row}>
+            <p className="label text-ink-muted">Technical</p>
+            <div className="flex flex-wrap gap-2">
+              {skills.map(skill => (
+                <span key={skill} className="label text-ink border border-line px-2.5 py-1.5">{skill}</span>
+              ))}
+            </div>
+          </div>
+          <div className={`${row} mt-8`}>
+            <p className="label text-ink-muted">Languages</p>
+            <p className="text-ink-muted">{languages.join(' · ')}</p>
+          </div>
+        </Section>
 
-    </main>
+        <Section label="Certifications">
+          <div className={row}>
+            <div />
+            <ul className="space-y-2 list-none p-0">
+              {certifications.map(cert => (
+                <li key={cert} className="pl-5 relative before:content-['—'] before:absolute before:left-0 before:text-gold">{cert}</li>
+              ))}
+            </ul>
+          </div>
+        </Section>
+    </Page>
   )
 }
