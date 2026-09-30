@@ -57,3 +57,6 @@ next-env.d.ts
 .claude/scheduled_tasks.lock
 .claude/scheduled_tasks.json
 # END swamp managed section
+
+# brainstorming companion sessions
+.superpowers/
