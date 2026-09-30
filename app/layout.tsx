@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Lora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <div id="main-content">
           {children}
         </div>
+        <Analytics />
       </body>
     </html>
   );
