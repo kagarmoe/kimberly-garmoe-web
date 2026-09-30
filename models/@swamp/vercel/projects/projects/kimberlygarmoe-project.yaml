@@ -1,0 +1,14 @@
+type: '@swamp/vercel/projects/projects'
+typeVersion: 2026.09.29.1
+id: 41079955-927a-44bb-ab2a-0d83f3cc07c1
+name: kimberlygarmoe-project
+version: 1
+tags: {}
+globalArguments:
+  teamId: team_SMACO8iOr6wPIGx5as56P468
+  name: kimberly-garmoe-web
+  token: ${{ vault.get("secrets", "vercel-token") }}
+methods:
+  get:
+    arguments:
+      id: prj_efJxYoMocTpENXJX5JGtNUSKSMDH

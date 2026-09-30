@@ -1,0 +1,26 @@
+id: d03991f6-4a12-4728-b646-3b2798de2bb4
+name: deploy-check
+description: Refresh the Vercel project record and assert the latest deployment is a healthy production deploy
+tags: {}
+version: 1
+jobs:
+  - name: check
+    steps:
+      - name: refresh-project
+        description: Fetch live project state from Vercel
+        task:
+          type: model_method
+          modelIdOrName: kimberlygarmoe-project
+          methodName: get
+      - name: latest-deploy-ready
+        dependsOn:
+          - step: refresh-project
+            condition:
+              type: succeeded
+        task:
+          type: assert
+          expr: >-
+            data.latest("kimberlygarmoe-project", "kimberly-garmoe-web").attributes.latestDeployments[0].readyState == "READY"
+            && data.latest("kimberlygarmoe-project", "kimberly-garmoe-web").attributes.latestDeployments[0].target == "production"
+          message: "Latest Vercel deployment for kimberlygarmoe.com is not a READY production deploy"
+          severity: high
