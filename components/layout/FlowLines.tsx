@@ -25,7 +25,7 @@ const beads = [
   { path: 2, dur: '25s', begin: '-15s', r: 9 },
 ]
 
-const green = 'hsl(165 35% 40%)'
+const green = 'hsl(178 35% 13%)' // --color-ink, the hero's dark teal (literal: SMIL can't read CSS vars)
 const gold = 'hsl(40 70% 55%)'
 // Paths run left to right at roughly constant speed, so time ≈ x. The
 // headshot spans about 24%–46% of the width; the colour crossfades there.
