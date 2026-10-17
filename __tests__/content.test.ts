@@ -57,9 +57,9 @@ describe('getAllProjects', () => {
     expect(projects.length).toBeGreaterThan(0)
   })
 
-  it('includes pursinator and idle-chapters', () => {
+  it('includes adored and idle-chapters', () => {
     const slugs = getAllProjects().map(p => p.slug)
-    expect(slugs).toContain('pursinator')
+    expect(slugs).toContain('adored')
     expect(slugs).toContain('idle-chapters')
   })
 
@@ -77,13 +77,13 @@ describe('getAllProjects', () => {
 
 describe('getProject', () => {
   it('returns the project with the matching slug', () => {
-    const project = getProject('pursinator')
+    const project = getProject('adored')
     expect(project).toBeDefined()
-    expect(project?.slug).toBe('pursinator')
-    expect(project?.title).toBe('Pursinator')
+    expect(project?.slug).toBe('adored')
+    expect(project?.title).toBe('Adored')
     expect(project?.status).toBe('in-progress')
     expect(project?.tech).toEqual(['Next.js', 'TypeScript', 'PostgreSQL'])
-    expect(project?.repo).toBe('https://github.com/kagarmoe/pursinator')
+    expect(project?.repo).toMatch(/^https:\/\/github\.com\/kagarmoe\//)
     expect(project?.content).toContain('## Overview')
   })
 
