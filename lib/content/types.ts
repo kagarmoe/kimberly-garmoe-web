@@ -18,5 +18,6 @@ export type Project = {
   tech?: string[]
   repo?: string
   live?: string
+  docs?: string
   draft?: boolean
 }

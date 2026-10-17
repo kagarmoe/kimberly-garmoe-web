@@ -28,10 +28,11 @@ export default async function ProjectPage({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
           <div className="font-mono text-[0.8rem] text-ink-muted leading-relaxed">
             {project.tech && <p>{project.tech.join(', ')}</p>}
-            {(project.repo || project.live) && (
+            {(project.repo || project.live || project.docs) && (
               <ul className="list-none m-0 p-0 mt-4 space-y-1">
                 {project.repo && <li><a href={project.repo}>Repository ↗</a></li>}
                 {project.live && <li><a href={project.live}>Live ↗</a></li>}
+                {project.docs && <li><a href={project.docs}>Docs ↗</a></li>}
               </ul>
             )}
           </div>
