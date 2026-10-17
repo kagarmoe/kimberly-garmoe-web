@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // swamp extensions run on Deno, not in the Next.js app; swamp checks them itself.
+    ".swamp/**",
+    "extensions/**",
   ]),
 ]);
 
