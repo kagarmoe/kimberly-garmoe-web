@@ -83,7 +83,7 @@ describe('getProject', () => {
     expect(project?.title).toBe('Adored')
     expect(project?.status).toBe('in-progress')
     expect(project?.tech).toEqual(['Next.js', 'TypeScript', 'PostgreSQL'])
-    expect(project?.repo).toMatch(/^https:\/\/github\.com\/kagarmoe\//)
+    expect(project?.docs).toBe('https://kagarmoe.github.io/purseinator-app/')
     expect(project?.content).toContain('## Overview')
   })
 

@@ -47,6 +47,7 @@ function parseProject(slug: string, raw: string): Project {
     tech: Array.isArray(data.tech) ? data.tech.map(String) : undefined,
     repo: data.repo ? String(data.repo) : undefined,
     live: data.live ? String(data.live) : undefined,
+    docs: data.docs ? String(data.docs) : undefined,
     draft: Boolean(data.draft),
   }
 }
