@@ -3,9 +3,6 @@
     "version": "2026.09.29.1",
     "pulledAt": "2026-09-30T21:44:43.413Z",
     "files": [
-      ".swamp/bundles/5dde58f0/domains.js",
-      ".swamp/bundles/5dde58f0/env.js",
-      ".swamp/bundles/5dde58f0/projects.js",
       ".swamp/pulled-extensions/@swamp/vercel/projects/files/LICENSE.txt",
       ".swamp/pulled-extensions/@swamp/vercel/projects/files/README.md",
       ".swamp/pulled-extensions/@swamp/vercel/projects/manifest.yaml",
@@ -22,7 +19,6 @@
     "version": "2026.09.25.1",
     "pulledAt": "2026-09-30T21:44:45.270Z",
     "files": [
-      ".swamp/bundles/624a362c/deployments.js",
       ".swamp/pulled-extensions/@swamp/vercel/deployments/files/LICENSE.txt",
       ".swamp/pulled-extensions/@swamp/vercel/deployments/files/README.md",
       ".swamp/pulled-extensions/@swamp/vercel/deployments/manifest.yaml",
@@ -37,7 +33,6 @@
     "version": "2026.08.03.3",
     "pulledAt": "2026-09-30T22:06:19.739Z",
     "files": [
-      ".swamp/bundles/d79aefe7/drains.js",
       ".swamp/pulled-extensions/@swamp/vercel/drains/files/LICENSE.txt",
       ".swamp/pulled-extensions/@swamp/vercel/drains/files/README.md",
       ".swamp/pulled-extensions/@swamp/vercel/drains/manifest.yaml",
