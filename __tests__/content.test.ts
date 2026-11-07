@@ -142,5 +142,16 @@ describe('loadPosts (devswamp-175)', () => {
     expect(() =>
       loadPosts(dirWith({ 'feb.md': post('title: F\ndate: "2026-02-30"') })),
     ).toThrow(/feb\.md: date must be YYYY-MM-DD/)
+    // devswamp-178: unquoted, YAML rolls it over before the loader sees it.
+    expect(() =>
+      loadPosts(dirWith({ 'feb2.md': post('title: F\ndate: 2026-02-30') })),
+    ).toThrow(/feb2\.md: date must be YYYY-MM-DD/)
+  })
+
+  it('accepts a valid unquoted date', () => {
+    const [p] = loadPosts(
+      dirWith({ 'nov.md': post('title: N\ndate: 2026-11-01') }),
+    )
+    expect(p.date).toBe('2026-11-01')
   })
 })

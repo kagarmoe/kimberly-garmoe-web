@@ -25,12 +25,16 @@ function normalizeDate(value: unknown): string {
 }
 
 function parsePost(slug: string, file: string, raw: string): Post {
-  const { data, content } = matter(raw)
+  const { data, content, matter: frontMatter } = matter(raw)
   // A post that would render wrong fails the build instead (devswamp-175).
   if (typeof data.title !== 'string' || !data.title.trim()) {
     throw new Error(`content/blog/${file}: title is required`)
   }
-  const date = normalizeDate(data.date)
+  // YAML turns an unquoted date into a Date and rolls 2026-02-30 over to March,
+  // so check the date as written (devswamp-178).
+  const date = data.date instanceof Date
+    ? (frontMatter.match(/^date:\s*(\S+)\s*$/m)?.[1] ?? '')
+    : normalizeDate(data.date)
   // Round-tripping rejects dates Date.parse rolls over, such as 2026-02-30.
   const parsed = Date.parse(date)
   if (
