@@ -138,5 +138,9 @@ describe('loadPosts (devswamp-175)', () => {
     expect(() =>
       loadPosts(dirWith({ 'z.md': post('title: Z\ndate: "soon"') })),
     ).toThrow(/z\.md: date must be YYYY-MM-DD/)
+    // devswamp-177: an impossible date fails instead of rolling over to March.
+    expect(() =>
+      loadPosts(dirWith({ 'feb.md': post('title: F\ndate: "2026-02-30"') })),
+    ).toThrow(/feb\.md: date must be YYYY-MM-DD/)
   })
 })
