@@ -31,7 +31,13 @@ function parsePost(slug: string, file: string, raw: string): Post {
     throw new Error(`content/blog/${file}: title is required`)
   }
   const date = normalizeDate(data.date)
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || Number.isNaN(Date.parse(date))) {
+  // Round-tripping rejects dates Date.parse rolls over, such as 2026-02-30.
+  const parsed = Date.parse(date)
+  if (
+    !/^\d{4}-\d{2}-\d{2}$/.test(date) ||
+    Number.isNaN(parsed) ||
+    new Date(parsed).toISOString().slice(0, 10) !== date
+  ) {
     throw new Error(`content/blog/${file}: date must be YYYY-MM-DD`)
   }
   return {
