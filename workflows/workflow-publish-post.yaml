@@ -1,0 +1,48 @@
+id: a7e6e713-e508-4c3b-ac4d-3a73c7f86956
+name: publish-post
+description: >-
+  Open the pull request that publishes a blog post. Before running it, commit
+  content/blog/<slug>.md (or .mdx) on a branch post/<slug> made from
+  origin/main, and push it: pushing makes the post public on GitHub before any
+  merge. This workflow opens the pull request to main; rerunning it opens no
+  second one, and republishing an edited post is a new commit pushed to the same
+  branch. CI and the required Vercel check run on it; merging is the person's,
+  and it deploys to production. It commits and pushes nothing itself
+  (devswamp-175).
+tags: {}
+inputs:
+  properties:
+    slug:
+      type: string
+      pattern: "^[a-z0-9]+(-[a-z0-9]+)*$"
+      description: The post's file name without .md or .mdx; the branch is post/<slug>
+    title:
+      type: string
+      minLength: 1
+      description: The post's title, for the pull request
+  required: [slug, title]
+jobs:
+  - name: publish
+    description: Open the post's pull request to main
+    steps:
+      - name: open-pr
+        task:
+          type: model_method
+          modelIdOrName: github
+          methodName: openPr
+          inputs:
+            repo: kimberly-garmoe-web
+            head: post/${{ inputs.slug }}
+            base: main
+            title: "Post: ${{ inputs.title }}"
+            body: >-
+              Publishes content/blog/${{ inputs.slug }} (devswamp-175 publish-post).
+              Merging deploys it to https://www.kimberlygarmoe.com/blog/${{ inputs.slug }}.
+            draft: false
+            dryRun: false
+        dependsOn: []
+        weight: 0
+        allowFailure: false
+    dependsOn: []
+    weight: 0
+version: 1

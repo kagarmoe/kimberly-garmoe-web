@@ -4,6 +4,8 @@ export type Post = {
   description: string
   date: string
   content: string
+  /** md renders as plain Markdown (raw HTML dropped); mdx allows JSX. */
+  format: 'md' | 'mdx'
   draft?: boolean
 }
 
