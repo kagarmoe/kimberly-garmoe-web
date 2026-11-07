@@ -1,5 +1,45 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Publishing a post
+
+A post is `content/blog/<slug>.md` (plain Markdown) or `content/blog/<slug>.mdx`
+(MDX, for JSX or raw HTML: a `.md` post drops raw HTML). Front matter:
+
+```yaml
+---
+title: My post          # required
+date: "2026-11-07"      # required, YYYY-MM-DD
+description: One line for the index and the page header.
+---
+```
+
+A post without a title or a valid date fails the build, so the Vercel check
+blocks its pull request. `draft: true` does **not** hide a post yet: it
+publishes like any other.
+
+To publish:
+
+```sh
+git fetch origin
+git switch -c post/my-post origin/main
+# write content/blog/my-post.md
+git add content/blog/my-post.md
+git commit -m "Post: My post"
+git push -u origin post/my-post
+swamp workflow run publish-post --input slug=my-post --input 'title=My post'
+```
+
+Pushing makes the post public on GitHub before anything is merged. The workflow
+opens the pull request to main (rerunning it opens no second one; to change the
+post, commit and push to the same branch). CI and the Vercel preview check it;
+merging deploys it to `https://www.kimberlygarmoe.com/blog/<slug>`. Production
+health is checked by oikos' `vercel-health`.
+
+The `github` instance reads `secrets/github-token`: a fine-grained token for
+this repository only, with Pull requests read/write and Metadata read, and no
+Contents write or Administration, so it can open a pull request but cannot merge
+one.
+
 ## Getting Started
 
 First, run the development server:

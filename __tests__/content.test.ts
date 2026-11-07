@@ -1,9 +1,13 @@
+import fs from 'node:fs'
+import os from 'node:os'
+import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import {
   getAllPosts,
   getPost,
   getAllProjects,
   getProject,
+  loadPosts,
 } from '@/lib/content'
 
 describe('getAllPosts', () => {
@@ -89,5 +93,50 @@ describe('getProject', () => {
 
   it('returns undefined for an unknown slug', () => {
     expect(getProject('does-not-exist')).toBeUndefined()
+  })
+})
+
+describe('loadPosts (devswamp-175)', () => {
+  const dirWith = (files: Record<string, string>) => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'posts-'))
+    for (const [name, raw] of Object.entries(files)) {
+      fs.writeFileSync(path.join(dir, name), raw)
+    }
+    return dir
+  }
+  const post = (front: string, body = 'Body.') => `---\n${front}\n---\n\n${body}\n`
+
+  it('reads plain .md posts as well as .mdx, keeping each format', () => {
+    const posts = loadPosts(
+      dirWith({
+        'a.md': post('title: A\ndate: "2026-11-01"', 'Uses { and < freely.'),
+        'b.mdx': post('title: B\ndate: "2026-11-02"'),
+        'notes.txt': 'ignored',
+      }),
+    )
+    expect(posts.map(p => [p.slug, p.format])).toEqual([
+      ['b', 'mdx'],
+      ['a', 'md'],
+    ])
+  })
+
+  it('fails on a slug present as both .md and .mdx', () => {
+    const dir = dirWith({
+      'a.md': post('title: A\ndate: "2026-11-01"'),
+      'a.mdx': post('title: A\ndate: "2026-11-01"'),
+    })
+    expect(() => loadPosts(dir)).toThrow(/a\.md and a\.mdx/)
+  })
+
+  it('fails on a post without a title or a valid date, so the build fails', () => {
+    expect(() =>
+      loadPosts(dirWith({ 'x.md': post('date: "2026-11-01"') })),
+    ).toThrow(/x\.md: title is required/)
+    expect(() =>
+      loadPosts(dirWith({ 'y.md': post('title: Y') })),
+    ).toThrow(/y\.md: date must be YYYY-MM-DD/)
+    expect(() =>
+      loadPosts(dirWith({ 'z.md': post('title: Z\ndate: "soon"') })),
+    ).toThrow(/z\.md: date must be YYYY-MM-DD/)
   })
 })

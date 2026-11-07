@@ -30,7 +30,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
           <div />
           <div className="prose max-w-prose">
-            <MDXRemote source={post.content} />
+            <MDXRemote source={post.content} options={{ mdxOptions: { format: post.format } }} />
           </div>
         </div>
     </Page>

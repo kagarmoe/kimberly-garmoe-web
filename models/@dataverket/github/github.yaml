@@ -1,0 +1,13 @@
+type: '@dataverket/github'
+typeVersion: 2026.10.05.1
+id: bc79b308-3f68-43a3-981f-cceb778c974b
+name: github
+version: 1
+tags: {}
+globalArguments:
+  owner: kagarmoe
+  # A fine-grained token for kagarmoe/kimberly-garmoe-web only: Pull requests
+  # read/write and Metadata read; no Contents write or Administration, so it
+  # can open a pull request but cannot merge one (devswamp-175, S1-F2).
+  token: ${{ vault.get("secrets", "github-token") }}
+methods: {}
