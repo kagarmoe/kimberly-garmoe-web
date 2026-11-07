@@ -19,11 +19,6 @@ function readMdxDir(subdir: string): { slug: string; raw: string }[] {
     }))
 }
 
-function normalizeDate(value: unknown): string {
-  if (value instanceof Date) return value.toISOString().slice(0, 10)
-  return String(value ?? '')
-}
-
 function parsePost(slug: string, file: string, raw: string): Post {
   const { data, content, matter: frontMatter } = matter(raw)
   // A post that would render wrong fails the build instead (devswamp-175).
@@ -34,7 +29,7 @@ function parsePost(slug: string, file: string, raw: string): Post {
   // so check the date as written (devswamp-178).
   const date = data.date instanceof Date
     ? (frontMatter.match(/^date:\s*(\S+)\s*$/m)?.[1] ?? '')
-    : normalizeDate(data.date)
+    : String(data.date ?? '')
   // Round-tripping rejects dates Date.parse rolls over, such as 2026-02-30.
   const parsed = Date.parse(date)
   if (
