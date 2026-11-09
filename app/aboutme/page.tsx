@@ -88,7 +88,7 @@ const skills = [
   'Knowledge Management', 'Taxonomy & Ontology', 'Information Architecture',
   'Technical Writing', 'Spark', 'Databricks', 'BigTable', 'Apache Kafka', 'Python', 'JavaScript', 'Ruby',
 ]
-const languages = ['English (native)', 'German (professional working)', 'Dutch (reading)']
+const languages = ['English (native)', 'German (reading)']
 const certifications = [
   'Advanced Programming in Python',
   "Professional Librarian's Life Certificate",
