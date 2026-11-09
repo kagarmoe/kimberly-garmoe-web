@@ -1,0 +1,25 @@
+# Version updates (devswamp-162, design docs/plans/2026-11-07-dependency-updates-design.md).
+# oikos' nightly vuln-scan merges green Dependabot PRs; it holds majors and the
+# framework group for the person. No `ignore`: it would also drop security fixes.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    # Held majors count toward this limit; vuln-scan warns as it nears it.
+    open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
+    groups:
+      # First, so next, react and react-dom never land in minor-and-patch.
+      framework:
+        patterns: [next, react, react-dom]
+      minor-and-patch:
+        update-types: [minor, patch]
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
