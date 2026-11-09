@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { Page, PageHeader } from '@/components/layout/PageHeader'
 
 export const metadata: Metadata = {
@@ -88,7 +89,7 @@ const skills = [
   'Knowledge Management', 'Taxonomy & Ontology', 'Information Architecture',
   'Technical Writing', 'Spark', 'Databricks', 'BigTable', 'Apache Kafka', 'Python', 'JavaScript', 'Ruby',
 ]
-const languages = ['English (native)', 'German (professional working)', 'Dutch (reading)']
+const languages = ['English (native)', 'German (reading)']
 const certifications = [
   'Advanced Programming in Python',
   "Professional Librarian's Life Certificate",
@@ -126,6 +127,7 @@ export default function AboutPage() {
                   <li><a href="mailto:kagarmoe@gmail.com">Email ↗</a></li>
                   <li><a href="https://linkedin.com/in/kimberlygarmoe">LinkedIn ↗</a></li>
                   <li><a href="https://github.com/kagarmoe">GitHub ↗</a></li>
+                  <li><Link href="/writing-samples">Writing samples</Link></li>
                 </ul>
               </div>
               <div>

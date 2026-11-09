@@ -1,4 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# kimberlygarmoe.com
+
+Kimberly Garmoe's personal site, at https://www.kimberlygarmoe.com: a
+[Next.js](https://nextjs.org) app in TypeScript, deployed by Vercel.
+
+## What is where
+
+| Page               | Source                                                     |
+| ------------------ | ---------------------------------------------------------- |
+| `/`                | `app/page.tsx`                                             |
+| `/aboutme`         | `app/aboutme/page.tsx` (experience, skills, languages)     |
+| `/blog`            | `content/blog/<slug>.md` or `.mdx` (see below)             |
+| `/projects`        | `content/projects/<slug>.mdx`                              |
+| `/writing-samples` | `app/writing-samples/page.tsx` (links to published docs)   |
+
+The navigation is `components/navigation/Nav.tsx`. A project's front matter
+sets its links: `repo`, `live` and `docs` each show as a link on its page.
+
+```yaml
+---
+title: Adored
+description: One line for the index and the page header.
+status: in-progress     # active | in-progress | planned | archived
+tech: [Next.js, TypeScript]
+repo: https://github.com/kagarmoe/adored
+live: https://adored.kimberlygarmoe.com/
+---
+```
 
 ## Publishing a post
 
@@ -40,37 +67,27 @@ this repository only, with Pull requests read/write and Metadata read, and no
 Contents write or Administration, so it can open a pull request but cannot merge
 one.
 
-## Getting Started
+## Developing
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+npm ci
+npm run dev     # http://localhost:3000
+npm run lint
+npm test        # vitest
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+CI (`.github/workflows/test.yml`) runs lint and tests on every pull request.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Shipping
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`main` is PR-only. Merging to `main` deploys production on Vercel; every pull
+request gets a Vercel preview. Agents' rules for this repo are in `AGENTS.md`.
 
-## Learn More
+Dependencies update through Dependabot (`.github/dependabot.yml`): minor and
+patch updates arrive weekly as one grouped PR, which oikos' nightly `vuln-scan`
+merges once its checks pass. Majors, and next, react and react-dom, wait for a
+person to read the notes and merge or close them.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+oikos also runs `vercel-health`, which checks that production is READY and was
+built from `main`.
