@@ -7,7 +7,6 @@ const links = [
   { href: '/aboutme', label: 'About' },
   { href: '/blog', label: 'Writing' },
   { href: '/projects', label: 'Projects' },
-  { href: '/writing-samples', label: 'Samples' },
 ]
 
 export function Nav() {
