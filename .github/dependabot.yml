@@ -12,9 +12,11 @@ updates:
     cooldown:
       default-days: 7
     groups:
-      # First, so next, react and react-dom never land in minor-and-patch.
+      # First, so next, react and react-dom never land in minor-and-patch. Their
+      # majors are left out, so each opens as its own PR, apart from the minors.
       framework:
         patterns: [next, react, react-dom]
+        update-types: [minor, patch]
       minor-and-patch:
         update-types: [minor, patch]
   - package-ecosystem: github-actions

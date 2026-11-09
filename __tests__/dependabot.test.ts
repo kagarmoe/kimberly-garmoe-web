@@ -19,7 +19,11 @@ const npm = config.updates.find((u) => u['package-ecosystem'] === 'npm')!
 describe('.github/dependabot.yml', () => {
   it('groups the framework first, so its updates never join the auto-merged group', () => {
     const [first, ...rest] = Object.entries(npm.groups ?? {})
-    expect(first).toEqual(['framework', { patterns: ['next', 'react', 'react-dom'] }])
+    // Without update-types a framework major would ride in the same PR as its minors.
+    expect(first).toEqual([
+      'framework',
+      { patterns: ['next', 'react', 'react-dom'], 'update-types': ['minor', 'patch'] },
+    ])
     expect(rest).toEqual([['minor-and-patch', { 'update-types': ['minor', 'patch'] }]])
   })
 
