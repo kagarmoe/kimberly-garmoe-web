@@ -8,7 +8,7 @@ addresses are left out on purpose.
 ```mermaid
 flowchart LR
   subgraph tailnet["Tailnet: no exit node, no Funnel, nothing public"]
-    subgraph hub["tag:hub, always-on desktop"]
+    subgraph hub["Hub, always-on desktop<br/>tag:hub planned"]
       serve["swamp serve<br/>wss, token auth, TLS"]
       hubworker["hub's own worker"]
       fleetdata[("fleet data<br/>tickets, inventory, run history")]
@@ -17,7 +17,7 @@ flowchart LR
       gpu["GPU worker, always on<br/>also tag:hub-standby<br/>local models on loopback only"]
       laptop["Laptop<br/>worker while awake"]
     end
-    phone["Phone<br/>untagged client, runs nothing"]
+    phone["Phone<br/>untagged client, runs nothing<br/>reads alerts in Discord"]
   end
   lan["Home LAN printer<br/>subnet route"]
 
@@ -25,7 +25,7 @@ flowchart LR
   laptop -- "dials out: worker connection,<br/>request-* workflows" --> serve
   hub -- "SSH, one way only:<br/>enroll and upkeep" --> workers
   hub -- "hourly backup<br/>restic over SFTP" --> gpu
-  phone -- "dashboard, approvals" --> serve
+  phone -. "dashboard and approvals<br/>(planned)" .-> serve
   tailnet -. "all members" .-> lan
   laptop -. "break-glass SSH, Touch ID<br/>(planned)" .-> hub
   phone -. "break-glass SSH and RDP, Face ID<br/>(planned)" .-> hub
@@ -42,8 +42,9 @@ flowchart LR
 - **Machines ask, they don't act.** Each worker machine has its own swamp
   identity with a 7-day token rotated every 3 days. It may read workflows,
   behaviors and data, and start `request-*` intake workflows (file a ticket,
-  ask for an agent run, ask for time-boxed access). Anything that isn't
-  read-only waits for a person's approval, posted to Discord.
+  ask for an agent run, ask for time-boxed access). A ticket is filed at once,
+  up to 10 a day per machine. An agent run that can write, or access beyond
+  read-only, waits for a person's approval, posted to Discord.
 - **SSH goes one way.** The hub reaches the workers over SSH to enroll and
   update them. Nothing reaches the hub over SSH, because agents run on the
   workers and a path into the hub would be a path to its vault. A break-glass
@@ -57,18 +58,21 @@ flowchart LR
 ## Access policy
 
 The tailnet policy is code in a repository, changed only by pull request and
-validated with the policy file's own tests, including negative ones. Roles are
-Tailscale tags, so rules name a role, never a device. The tags and tests are
-live; the narrowing below is the target the policy is moving to from
-Tailscale's default allow-all.
+validated with the policy file's own tests. Roles are Tailscale tags, so rules
+name a role, never a device.
+
+**Today** the policy still allows every device to reach every port, Tailscale's
+default. What is live: the worker tags, who may assign them, and two tests that
+workers reach the hub's serve and the hub reaches the workers over SSH.
+
+**The target** narrows it to this, with negative tests added alongside (for
+example, a worker can't SSH to the hub):
 
 | From | To | What |
 | --- | --- | --- |
-| a person at a keyboard | everything | all |
+| a person's own untagged devices | everything | all |
 | `tag:worker` | `tag:hub` | the serve ports only |
 | `tag:hub` | `tag:worker` | SSH, for enrollment and upkeep |
-| untagged clients (phone) | `tag:hub` | the serve's dashboard |
-| all members | the printer subnet route | as today |
+| everyone | the printer subnet route | as today |
 
-Tests in the policy file check, among others, that a client can't reach a
-worker and a worker can't SSH to the hub.
+The hub itself isn't tagged yet: it is also a personal desktop.
