@@ -130,3 +130,47 @@
 .prose code {
   font-family: var(--font-plex-mono), monospace;
 }
+
+/* Mermaid diagrams in posts (components/blog/Mermaid.tsx): a cream card on paper. */
+[data-mermaid] {
+  background: var(--color-cream);
+  border: 1px solid var(--color-line);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  overflow-x: auto;
+}
+
+[data-mermaid] svg {
+  display: block;
+  margin-inline: auto;
+}
+
+/* Mermaid marks its node text .label; keep the site's .label utility (uppercase mono) off it.
+   svg[id^="mermaid-"] also matches the copy mermaid measures text in, outside the card,
+   so labels are sized with the same font they are drawn in. */
+svg[id^="mermaid-"] .label {
+  font-family: var(--font-geist), sans-serif;
+  font-size: 15px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+svg[id^="mermaid-"] .cluster-label span,
+svg[id^="mermaid-"] .edgeLabel {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 12px;
+  color: var(--color-ink-muted);
+}
+
+svg[id^="mermaid-"] .node rect {
+  rx: 6px;
+  ry: 6px;
+}
+
+/* The source shows until mermaid draws it, and stays if it cannot. */
+[data-mermaid] > pre {
+  font-family: var(--font-plex-mono), monospace;
+  font-size: 0.75rem;
+  white-space: pre-wrap;
+  color: var(--color-ink-muted);
+}

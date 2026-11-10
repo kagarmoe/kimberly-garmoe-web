@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllPosts, getPost } from '@/lib/content'
 import { Page, PageHeader } from '@/components/layout/PageHeader'
+import { mdxComponents } from '@/components/blog/mdx'
 import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ slug: string }> }
@@ -30,7 +31,11 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-4 md:gap-16">
           <div />
           <div className="prose max-w-prose">
-            <MDXRemote source={post.content} options={{ mdxOptions: { format: post.format } }} />
+            <MDXRemote
+              source={post.content}
+              components={mdxComponents}
+              options={{ mdxOptions: { format: post.format } }}
+            />
           </div>
         </div>
     </Page>

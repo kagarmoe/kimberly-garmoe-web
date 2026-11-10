@@ -1,4 +1,8 @@
-# My tailnet
+---
+title: My tailnet
+date: "2026-11-09"
+description: How the machines on my tailnet work together around one swamp hub.
+---
 
 How the machines on my home tailnet work together. One always-on hub runs
 [swamp](https://github.com/swamp-club/swamp) and coordinates work. The other
@@ -6,10 +10,10 @@ machines are workers that dial out to it. Device names, the tailnet domain and
 addresses are left out on purpose.
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph tailnet["Tailnet: no exit node, no Funnel, nothing public"]
     subgraph hub["tag:hub, always-on desktop"]
-      serve["swamp serve<br/>wss, token auth, TLS"]
+      serve["swamp serve, one per repo<br/>wss, token auth, TLS"]
       hubworker["hub's own worker"]
       fleetdata[("fleet data<br/>tickets, inventory, run history")]
     end
@@ -25,10 +29,10 @@ flowchart LR
   laptop -- "dials out: worker connection,<br/>request-* workflows" --> serve
   hub -- "SSH, one way only:<br/>enroll and upkeep" --> workers
   hub -- "hourly backup<br/>restic over SFTP" --> gpu
-  phone -. "dashboard and approvals<br/>(planned)" .-> serve
+  phone -. "approvals (planned)" .-> serve
   tailnet -. "all members" .-> lan
   laptop -. "break-glass SSH, Touch ID<br/>(planned)" .-> hub
-  phone -. "break-glass SSH and RDP, Face ID<br/>(planned)" .-> hub
+  phone -. "break-glass (planned)" .-> hub
 ```
 
 ## How it fits together
@@ -68,9 +72,7 @@ workers reach the hub's serve and the hub reaches the workers over SSH.
 **The target** narrows it to this, with negative tests added alongside (for
 example, a worker can't SSH to the hub):
 
-| From | To | What |
-| --- | --- | --- |
-| a person's own untagged devices | everything | all |
-| `tag:worker` | `tag:hub` | the serve ports only |
-| `tag:hub` | `tag:worker` | SSH, for enrollment and upkeep |
-| everyone | the printer subnet route | as today |
+- A person's own untagged devices reach everything.
+- `tag:worker` reaches `tag:hub` on the serve ports only.
+- `tag:hub` reaches `tag:worker` over SSH, for enrollment and upkeep.
+- Everyone reaches the printer subnet route, as today.
