@@ -10,7 +10,7 @@ const pipeline = [
 const sections = [
   { href: '/aboutme', label: 'About', desc: 'The problem I like, and how I got here' },
   { href: '/blog', label: 'Writing', desc: 'Essays and technical notes' },
-  { href: '/projects', label: 'Projects', desc: 'Pursinator, Idle Chapters, and others' },
+  { href: '/projects', label: 'Projects', desc: 'Adored, Idle Chapters, and others' },
 ]
 
 export default function Page() {
