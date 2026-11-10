@@ -1,4 +1,8 @@
-# My tailnet
+---
+title: My tailnet
+date: "2026-11-09"
+description: How the machines on my tailnet work together around one swamp hub.
+---
 
 How the machines on my home tailnet work together. One always-on hub runs
 [swamp](https://github.com/swamp-club/swamp) and coordinates work. The other
@@ -9,7 +13,7 @@ addresses are left out on purpose.
 flowchart LR
   subgraph tailnet["Tailnet: no exit node, no Funnel, nothing public"]
     subgraph hub["tag:hub, always-on desktop"]
-      serve["swamp serve<br/>wss, token auth, TLS"]
+      serve["swamp serve, one per repo<br/>wss, token auth, TLS"]
       hubworker["hub's own worker"]
       fleetdata[("fleet data<br/>tickets, inventory, run history")]
     end
@@ -68,9 +72,7 @@ workers reach the hub's serve and the hub reaches the workers over SSH.
 **The target** narrows it to this, with negative tests added alongside (for
 example, a worker can't SSH to the hub):
 
-| From | To | What |
-| --- | --- | --- |
-| a person's own untagged devices | everything | all |
-| `tag:worker` | `tag:hub` | the serve ports only |
-| `tag:hub` | `tag:worker` | SSH, for enrollment and upkeep |
-| everyone | the printer subnet route | as today |
+- A person's own untagged devices reach everything.
+- `tag:worker` reaches `tag:hub` on the serve ports only.
+- `tag:hub` reaches `tag:worker` over SSH, for enrollment and upkeep.
+- Everyone reaches the printer subnet route, as today.
