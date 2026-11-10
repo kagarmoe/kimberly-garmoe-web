@@ -155,7 +155,7 @@ svg[id^="mermaid-"] .label {
   text-transform: none;
 }
 
-svg[id^="mermaid-"] .cluster-label .label,
+svg[id^="mermaid-"] .cluster-label span,
 svg[id^="mermaid-"] .edgeLabel {
   font-family: var(--font-plex-mono), monospace;
   font-size: 12px;

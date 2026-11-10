@@ -10,7 +10,7 @@ machines are workers that dial out to it. Device names, the tailnet domain and
 addresses are left out on purpose.
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph tailnet["Tailnet: no exit node, no Funnel, nothing public"]
     subgraph hub["tag:hub, always-on desktop"]
       serve["swamp serve, one per repo<br/>wss, token auth, TLS"]

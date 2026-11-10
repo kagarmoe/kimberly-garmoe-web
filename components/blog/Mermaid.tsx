@@ -31,7 +31,8 @@ export const mermaidConfig = {
     edgeLabelBackground: palette.paper,
     tertiaryColor: palette.paper,
   },
-  flowchart: { curve: 'basis', padding: 14 },
+  // Natural size, never shrunk to the column: the card scrolls a wide diagram instead.
+  flowchart: { curve: 'basis', padding: 14, useMaxWidth: false },
 } as const
 
 /** Draws a Mermaid diagram in the browser; mermaid loads only on pages that have one. */

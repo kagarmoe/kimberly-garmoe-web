@@ -39,4 +39,9 @@ describe('mermaid fences in posts', () => {
   it('keeps mermaid from drawing its error graphic into the page', () => {
     expect(mermaidConfig.suppressErrorRendering).toBe(true)
   })
+
+  // cr-196-2: otherwise mermaid shrinks a wide diagram to the column and its labels become unreadable.
+  it('draws diagrams at their natural size', () => {
+    expect(mermaidConfig.flowchart.useMaxWidth).toBe(false)
+  })
 })
