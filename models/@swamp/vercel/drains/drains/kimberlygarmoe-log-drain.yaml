@@ -1,5 +1,5 @@
 type: '@swamp/vercel/drains/drains'
-typeVersion: 2026.08.03.3
+typeVersion: 2026.10.23.2
 id: 43d0c5f4-b921-4674-b3c6-e2cf60ec3a6c
 name: kimberlygarmoe-log-drain
 version: 1
