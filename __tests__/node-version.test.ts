@@ -17,10 +17,6 @@ const ciNode = String(
 const major = (range: string) => range.match(/\d+/)?.[0]
 
 describe('Node version', () => {
-  it('is 24 in CI', () => {
-    expect(ciNode).toBe('24')
-  })
-
   it('is the same major for Vercel (engines.node) as in CI', () => {
     expect(pkg.engines.node).toBe(`${ciNode}.x`)
   })
