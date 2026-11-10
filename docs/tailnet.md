@@ -8,7 +8,7 @@ addresses are left out on purpose.
 ```mermaid
 flowchart LR
   subgraph tailnet["Tailnet: no exit node, no Funnel, nothing public"]
-    subgraph hub["Hub, always-on desktop<br/>tag:hub planned"]
+    subgraph hub["tag:hub, always-on desktop"]
       serve["swamp serve<br/>wss, token auth, TLS"]
       hubworker["hub's own worker"]
       fleetdata[("fleet data<br/>tickets, inventory, run history")]
@@ -62,7 +62,7 @@ validated with the policy file's own tests. Roles are Tailscale tags, so rules
 name a role, never a device.
 
 **Today** the policy still allows every device to reach every port, Tailscale's
-default. What is live: the worker tags, who may assign them, and two tests that
+default. What is live: the hub and worker tags, who may assign them, and two tests that
 workers reach the hub's serve and the hub reaches the workers over SSH.
 
 **The target** narrows it to this, with negative tests added alongside (for
@@ -74,5 +74,3 @@ example, a worker can't SSH to the hub):
 | `tag:worker` | `tag:hub` | the serve ports only |
 | `tag:hub` | `tag:worker` | SSH, for enrollment and upkeep |
 | everyone | the printer subnet route | as today |
-
-The hub itself isn't tagged yet: it is also a personal desktop.
