@@ -29,10 +29,10 @@ flowchart LR
   laptop -- "dials out: worker connection,<br/>request-* workflows" --> serve
   hub -- "SSH, one way only:<br/>enroll and upkeep" --> workers
   hub -- "hourly backup<br/>restic over SFTP" --> gpu
-  phone -. "dashboard and approvals<br/>(planned)" .-> serve
+  phone -. "approvals (planned)" .-> serve
   tailnet -. "all members" .-> lan
   laptop -. "break-glass SSH, Touch ID<br/>(planned)" .-> hub
-  phone -. "break-glass SSH and RDP, Face ID<br/>(planned)" .-> hub
+  phone -. "break-glass (planned)" .-> hub
 ```
 
 ## How it fits together
