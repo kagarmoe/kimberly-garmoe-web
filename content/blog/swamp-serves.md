@@ -26,7 +26,8 @@ flowchart TB
   end
   gpu["GPU worker, always on"]
   subgraph local["Repos with no serve"]
-    factory["the factory repo<br/>and this site"]
+    factory["the factory repo"]
+    site["this site"]
   end
 
   %% Keep the dotted edge first: placed after the solid ones, Mermaid 12.3 drew it solid.
@@ -61,8 +62,9 @@ one is planned.
   through that one serve. An agent run that can write, or access beyond
   read-only, waits for a person's approval.
 - **Some repositories have no serve.** The factory that builds and reviews my
-  apps, and this site, run swamp locally on the laptop. Nothing on the hub runs
-  the factory's work. This site's delivery does run on the operations serve:
+  apps, and this site, run swamp locally on the laptop. The hub runs none of the
+  factory's work; it only keeps the factory's swamp version current. This
+  site's delivery does run on the operations serve:
   nightly it merges dependency updates whose checks pass, and it checks the
   production deployment. A planned link lets the factory's tickets refer to the
   hub's tickets through the operations serve, with a read-only token of its
