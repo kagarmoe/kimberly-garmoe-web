@@ -1,13 +1,14 @@
 import fs from 'node:fs'
 import os from 'node:os'
 import path from 'node:path'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import {
   getAllPosts,
   getPost,
   getAllProjects,
   getProject,
   loadPosts,
+  formatPostDate,
 } from '@/lib/content'
 
 describe('getAllPosts', () => {
@@ -153,5 +154,20 @@ describe('loadPosts (devswamp-175)', () => {
       dirWith({ 'nov.md': post('title: N\ndate: 2026-11-01') }),
     )
     expect(p.date).toBe('2026-11-01')
+  })
+})
+
+// devswamp-198: a YYYY-MM-DD date is midnight UTC, so formatting it in a US
+// time zone showed the day (and on the 1st, the month) before.
+describe('formatPostDate', () => {
+  const tz = process.env.TZ
+  afterEach(() => {
+    process.env.TZ = tz
+  })
+
+  it('shows the date as written in a US time zone', () => {
+    process.env.TZ = 'America/Los_Angeles'
+    expect(formatPostDate('2026-11-09', { year: 'numeric', month: 'long', day: 'numeric' })).toBe('November 9, 2026')
+    expect(formatPostDate('2026-11-01', { year: 'numeric', month: 'short' })).toBe('Nov 2026')
   })
 })

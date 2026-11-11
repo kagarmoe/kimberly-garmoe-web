@@ -87,6 +87,11 @@ function parseProject(slug: string, raw: string): Project {
   }
 }
 
+/** Formats a post's YYYY-MM-DD date as written: it parses as midnight UTC, so format in UTC too (devswamp-198). */
+export function formatPostDate(date: string, options: Intl.DateTimeFormatOptions): string {
+  return new Date(date).toLocaleDateString('en-US', { ...options, timeZone: 'UTC' })
+}
+
 export function getAllPosts(): Post[] {
   return loadPosts(path.join(CONTENT_ROOT, 'blog'))
 }
