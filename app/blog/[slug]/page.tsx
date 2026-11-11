@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
-import { getAllPosts, getPost } from '@/lib/content'
+import { formatPostDate, getAllPosts, getPost } from '@/lib/content'
 import { Page, PageHeader } from '@/components/layout/PageHeader'
 import { mdxComponents } from '@/components/blog/mdx'
 import type { Metadata } from 'next'
@@ -23,7 +23,7 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPost(slug)
   if (!post) notFound()
 
-  const date = new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  const date = formatPostDate(post.date, { year: 'numeric', month: 'long', day: 'numeric' })
 
   return (
     <Page>
