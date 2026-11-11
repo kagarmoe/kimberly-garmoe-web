@@ -44,4 +44,18 @@ describe('mermaid fences in posts', () => {
   it('draws diagrams at their natural size', () => {
     expect(mermaidConfig.flowchart.useMaxWidth).toBe(false)
   })
+
+  // cr-196-4 (devswamp-199): without titleColor, subgraph titles were a navy outside the palette.
+  it('colors subgraph titles from the palette', () => {
+    expect(mermaidConfig.themeVariables.titleColor).toBe('#416261')
+  })
+
+  // cr-196-5 (devswamp-199): a wide diagram scrolls sideways; keyboard-only readers need focus to scroll it.
+  it('makes the diagram card a focusable, labelled region', async () => {
+    const html = await render(post, 'md')
+    const card = html.match(/<div[^>]*data-mermaid[^>]*>/)?.[0] ?? ''
+    expect(card).toContain('tabindex="0"')
+    expect(card).toContain('role="region"')
+    expect(card).toMatch(/aria-label="[^"]+"/)
+  })
 })

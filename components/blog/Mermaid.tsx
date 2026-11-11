@@ -28,6 +28,8 @@ export const mermaidConfig = {
     textColor: palette.ink,
     clusterBkg: palette.paper,
     clusterBorder: palette.inkMuted,
+    // Subgraph titles; mermaid's own CSS colors them under the SVG id, so app CSS cannot.
+    titleColor: palette.inkMuted,
     edgeLabelBackground: palette.paper,
     tertiaryColor: palette.paper,
   },
@@ -56,8 +58,9 @@ export function Mermaid({ chart }: { chart: string }) {
     }
   }, [chart, id])
 
+  // Focusable so keyboard-only readers can scroll a diagram wider than the column.
   return (
-    <div ref={ref} data-mermaid className="not-prose my-10">
+    <div ref={ref} data-mermaid className="not-prose my-10" tabIndex={0} role="region" aria-label="Diagram">
       <pre>{chart}</pre>
     </div>
   )
