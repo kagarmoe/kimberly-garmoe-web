@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Geist, IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { Nav } from "@/components/navigation/Nav";
 import "./globals.css";
@@ -67,6 +68,18 @@ export default function RootLayout({
         <div id="main-content">
           {children}
         </div>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WMQCM997"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
         <Analytics />
       </body>
     </html>
